@@ -1,23 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ThemeProvider } from 'react-native-elements';
+import TitleBar from './components/TitleBar';
+import Maps from './components/Maps';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => (
+  <ThemeProvider>
+    <TitleBar />
+    <Maps />
+  </ThemeProvider>
+);
 
-export default class App extends React.Component {
-  state = {};
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+export default App;
