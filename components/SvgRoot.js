@@ -8,32 +8,103 @@ const {
 
 export default class SvgRoot extends Component {
   state = {
-    active: [[true, true, false, false, true], [false, false, true, true, false]],
   };
 
   render() {
     const { transform } = this.props;
-    const { active } = this.state;
-    const dist = 100 / 5;
     return (
       <Svg width="100%" height="100%">
         <Defs>
           <G id="chair">
             <Rect x="0" y="0" width="10" height="10" />
           </G>
+          <G id="deskHoz">
+            <Rect x="0" y="0" width="20" height="20" />
+          </G>
+          <G id="deskVert">
+            <Rect x="0" y="0" width="20" height="20" />
+          </G>
         </Defs>
         <G>
           <Rect x="0" y="0" width="100%" height="100%" fill="white" strokeWidth="3" stroke="#d1d5da" />
+
           <G transform={transform}>
-            {[0, 0].map((_, j) => [0 + j, 1 + j, 2 + j, 3 + j, 4 + j].map((id, i) => (
-              <Use
-                href="#chair"
-                x={String(dist * i)}
-                y={String(dist * j)}
-                fill={active[j][i] ? 'green' : 'black'}
-                key={id}
-              />
-            )))}
+            <G id="largeDeskOne" y="50">
+              <G id="deskOne" y="35">
+                <Use href="#deskHoz" />
+                <Use href="#deskHoz" x="20" />
+                <Use href="#chair" y="25" x="5" />
+                <Use href="#chair" y="25" x="25" />
+              </G>
+              <G id="deskTwo" x="40" y="35">
+                <Use href="#deskHoz" />
+                <Use href="#deskHoz" x="20" />
+                <Use href="#chair" y="25" x="5" />
+                <Use href="#chair" y="25" x="25" />
+              </G>
+              <G id="deskThree">
+                <Use href="#deskHoz" y="15" />
+                <Use href="#deskHoz" x="20" y="15" />
+                <Use href="#chair" x="5" />
+                <Use href="#chair" x="25" />
+              </G>
+              <G id="deskFour" x="40">
+                <Use href="#deskHoz" y="15" />
+                <Use href="#deskHoz" x="20" y="15" />
+                <Use href="#chair" x="5" />
+                <Use href="#chair" x="25" />
+              </G>
+            </G>
+            <G id="largeDeskTwo" y="140">
+              <G id="deskOne" y="35">
+                <Use href="#deskHoz" />
+                <Use href="#deskHoz" x="20" />
+                <Use href="#chair" y="25" x="5" />
+                <Use href="#chair" y="25" x="25" />
+              </G>
+              <G id="deskTwo" x="40" y="35">
+                <Use href="#deskHoz" />
+                <Use href="#deskHoz" x="20" />
+                <Use href="#chair" y="25" x="5" />
+                <Use href="#chair" y="25" x="25" />
+              </G>
+              <G id="deskThree">
+                <Use href="#deskHoz" y="15" />
+                <Use href="#deskHoz" x="20" y="15" />
+                <Use href="#chair" x="5" />
+                <Use href="#chair" x="25" />
+              </G>
+              <G id="deskFour" x="40">
+                <Use href="#deskHoz" y="15" />
+                <Use href="#deskHoz" x="20" y="15" />
+                <Use href="#chair" x="5" />
+                <Use href="#chair" x="25" />
+              </G>
+            </G>
+            <G id="smallDeskOne" x="100">
+              <Use href="#deskVert" x="15" />
+              <Use href="#deskVert" x="15" y="20" />
+              <Use href="#chair" y="5" />
+              <Use href="#chair" y="25" />
+            </G>
+            <G id="smallDeskTwo" x="100" y="60">
+              <Use href="#deskVert" x="15" />
+              <Use href="#deskVert" x="15" y="20" />
+              <Use href="#chair" y="5" />
+              <Use href="#chair" y="25" />
+            </G>
+            <G id="smallDeskThree" x="100" y="120">
+              <Use href="#deskVert" x="15" />
+              <Use href="#deskVert" x="15" y="20" />
+              <Use href="#chair" y="5" />
+              <Use href="#chair" y="25" />
+            </G>
+            <G id="smallDeskThree" x="100" y="180">
+              <Use href="#deskVert" x="15" />
+              <Use href="#deskVert" x="15" y="20" />
+              <Use href="#chair" y="5" />
+              <Use href="#chair" y="25" />
+            </G>
           </G>
         </G>
       </Svg>
