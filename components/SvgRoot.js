@@ -3,8 +3,9 @@ import { Svg } from 'expo';
 import PT from 'prop-types';
 
 const {
-  G, Rect, Defs, Use,
+  G, Rect, Defs, Use, Text,
 } = Svg;
+
 
 const styles = { occupied: 'red', vacant: 'green' };
 
@@ -36,13 +37,25 @@ export default class SvgRoot extends Component {
       false,
       false,
     ],
+    dimensions: { width: 0, height: 0 },
+  };
+
+  onLayout = (event) => {
+    const { width, height } = event.nativeEvent.layout;
+    this.setState({ dimensions: { width, height } });
   };
 
   render() {
     const { transform } = this.props;
-    const { occupied } = this.state;
+    const { occupied, dimensions: { height, width } } = this.state;
+    const keyHeight = height / 5;
+    const keyWidth = width / 3;
+    const keyTitleSize = (keyHeight - 20) / 5;
+    const keyItemSize = (keyHeight - 20) / 10;
+    const numKeyItems = 2;
+    const itemSpacing = ((keyHeight - keyTitleSize) / numKeyItems) - keyItemSize;
     return (
-      <Svg width="100%" height="100%">
+      <Svg width="100%" height="100%" onLayout={this.onLayout}>
         <Defs>
           <G id="chair">
             <Rect x="0" y="0" width="10" height="10" />
@@ -53,9 +66,43 @@ export default class SvgRoot extends Component {
           <G id="deskVert">
             <Rect x="0" y="0" width="20" height="20" />
           </G>
+          <G id="key" x="10" y="-10">
+            <Rect width={keyWidth} height={keyHeight} strokeWidth="3" stroke="#d1d5da" fill="white" />
+            <Text
+              fill="black"
+              fontSize={keyTitleSize}
+              fontWeight="bold"
+              x={(keyWidth / 2)}
+              y={keyTitleSize + 5}
+              textAnchor="middle"
+            >
+              Key
+            </Text>
+            <Text
+              fill="black"
+              fontSize={keyItemSize}
+              fontWeight="bold"
+              x="5"
+              y={itemSpacing + keyTitleSize}
+            >
+              Occupied
+            </Text>
+            <Text
+              fill="black"
+              fontSize={keyItemSize}
+              fontWeight="bold"
+              x="5"
+              y={2 * itemSpacing + keyTitleSize}
+            >
+              Vacant
+            </Text>
+            <Use href="#chair" y={itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 10 - 5} fill="red" />
+            <Use href="#chair" y={2 * itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 10 - 5} fill="green" />
+          </G>
         </Defs>
         <G>
           <Rect x="0" y="0" width="100%" height="100%" fill="white" strokeWidth="3" stroke="#d1d5da" />
+
 
           <G transform={transform}>
             <G id="room" x="5" y="5">
@@ -137,6 +184,8 @@ export default class SvgRoot extends Component {
               </G>
             </G>
           </G>
+
+          <Use href="#key" x="0" y={height - keyHeight} />
         </G>
       </Svg>
     );
