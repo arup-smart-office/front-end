@@ -6,7 +6,7 @@ import awsConfig from './aws-exports';
 
 Amplify.configure(awsConfig);
 
-export const getDesks = async () => API.graphql(graphqlOperation(queries.listDesks));
+export const getDesks = async limit => API.graphql(graphqlOperation(queries.listDesks, { limit }));
 
 export const subscribeToDesks = (func) => {
   API.graphql(graphqlOperation(subscriptions.onUpdateDesk)).subscribe({
