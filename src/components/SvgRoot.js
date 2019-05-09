@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Svg } from 'expo';
 import PT from 'prop-types';
-import * as api from '../api'
+import * as api from '../api';
 
 const {
   G, Rect, Defs, Use, Text,
@@ -17,10 +17,24 @@ export default class SvgRoot extends Component {
   };
 
   componentDidMount() {
-    api.getDesks(24).then(({ data: { listDesks } }) => this.updateOccuancy(listDesks.items));
+    api.getDesks(24).then(({ data: { listDesks } }) => this.seedDesk(listDesks.items));
+    api.subscribeToDesks(this.updateDesk);
   }
 
-  updateOccuancy = (desks) => {
+  updateDesk = ({ value: { data } }) => {
+    const updatedDesk = data.onUpdateDesk
+    console.log(updatedDesk, '< ---------updatedDesks')
+    this.setState(({ desks }) => ({
+      desks: desks.map((desk) => {
+        if (desk.id === updatedDesk.id) {
+          return { ...desk, ...updatedDesk };
+        }
+        return desk;
+      }),
+    }));
+  }
+
+  seedDesk = (desks) => {
     this.setState({ desks: desks.sort((a, b) => Number(a.id) - Number(b.id)) });
   }
 
@@ -38,7 +52,6 @@ export default class SvgRoot extends Component {
     const keyItemSize = (keyHeight - 20) / 10;
     const numKeyItems = 2;
     const itemSpacing = ((keyHeight - keyTitleSize) / numKeyItems) - keyItemSize;
-
     return (
       desks.length > 0 ? (
         <Svg width="100%" height="100%" onLayout={this.onLayout}>
@@ -63,7 +76,7 @@ export default class SvgRoot extends Component {
                 textAnchor="middle"
               >
                 Key
-            </Text>
+              </Text>
               <Text
                 fill="black"
                 fontSize={keyItemSize}
@@ -72,7 +85,7 @@ export default class SvgRoot extends Component {
                 y={itemSpacing + keyTitleSize}
               >
                 Occupied
-            </Text>
+              </Text>
               <Text
                 fill="black"
                 fontSize={keyItemSize}
@@ -81,7 +94,7 @@ export default class SvgRoot extends Component {
                 y={2 * itemSpacing + keyTitleSize}
               >
                 Vacant
-            </Text>
+              </Text>
               <Use href="#chair" y={itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 10 - 5} fill="red" />
               <Use href="#chair" y={2 * itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 10 - 5} fill="green" />
             </G>
