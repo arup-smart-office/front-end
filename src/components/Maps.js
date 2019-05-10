@@ -31,7 +31,7 @@ export default class Maps extends Component {
           }}
       >
         <ZoomableSvg
-          align="mid"
+          align="xMid"
           vbWidth="145"
           vbHeight="230"
           width={width}
