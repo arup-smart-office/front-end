@@ -41,18 +41,18 @@ export default class SvgRoot extends Component {
   };
 
   render() {
-    const { transform } = this.props;
+    const { transform, updatedSelectedDesk } = this.props;
     const { desks } = this.state;
     return (
       desks.length > 0 ? (
         <Svg width="100%" height="100%">
           <G>
-            <Rect x="0" y="0" width="100%" height="100%" strokeWidth="3" stroke="#CCC" fill="rgba(40, 170, 225, 0.4)" />
+            <Rect x="0" y="0" width="100%" height="100%" strokeWidth="3" stroke="#CCC" fill="rgba(40, 170, 225, 0.4)" onPressIn={() => { updatedSelectedDesk(null); }} />
 
             <G transform={transform}>
               <G id="room" x="5" y="5">
                 <Rect width="140" height="230" x="-2" fill="#FFF" stroke="#999" strokeWidth="1" />
-                <Rect width="140" height="230" x="-2" fill="rgba(40, 170, 225, 0.2)" stroke="#999" strokeWidth="1" />
+                <Rect width="140" height="230" x="-2" fill="rgba(40, 170, 225, 0.2)" stroke="#999" strokeWidth="1" onPressIn={() => { updatedSelectedDesk(null); }} />
                 <G id="largeDeskOne" y="50">
                   <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" rotation="180" />
                   <Desk id="1" desks={desks} onPress={this.selectDesk} origin="10, 17.5" rotation="180" x="20" />
@@ -96,7 +96,7 @@ export default class SvgRoot extends Component {
       ) : <Text>...Loading</Text>
     );
   }
-};
+}
 
 SvgRoot.propTypes = {
   transform: PT.shape({
