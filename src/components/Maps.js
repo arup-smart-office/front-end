@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card } from 'react-native-elements';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import ZoomableSvg from 'zoomable-svg';
 import SvgRoot from './SvgRoot';
+import InfoCard from './InfoCard';
 
 export default class Maps extends Component {
   state = { dimensions: { width: 0, height: 0 }, currentDesk: null };
@@ -57,31 +57,7 @@ export default class Maps extends Component {
         </View>
         {currentDesk
           ? (
-            <Card
-              title={currentDesk ? `Desk ${currentDesk.id}` : null}
-              containerStyle={{
-                position: 'relative',
-                padding: 15,
-                margin: 20,
-              }}
-            >
-              {currentDesk ? (
-                <View>
-                  <Text>
-                    <Text>The desk is currently</Text>
-                    <Text style={{ fontWeight: 'bold' }}>{currentDesk.isOccupied ? ' occupied' : ' vacant'}</Text>
-                  </Text>
-                  <Text>
-                    <Text>The temperature is</Text>
-                    <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.temperature}°C`}</Text>
-                  </Text>
-                  <Text>
-                    <Text>The light level is</Text>
-                    <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.light} Lux`}</Text>
-                  </Text>
-                </View>
-              ) : null}
-            </Card>
+            <InfoCard currentDesk={currentDesk} />
           ) : null}
       </View>
     );
