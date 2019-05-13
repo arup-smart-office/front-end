@@ -70,42 +70,6 @@ export default class SvgRoot extends Component {
             <G id="desk">
               <Rect x="0" y="0" width="20" height="20" fill="#CCC" stroke="#999" strokeWidth="1" ry="1" rx="1" />
             </G>
-            <G id="key" x="10" y="-10">
-              <Rect width={keyWidth} height={keyHeight} strokeWidth="3" stroke="#999" fill="#FFF" />
-              <Text
-                fill="#000"
-                fontSize={keyTitleSize}
-                fontWeight="bold"
-                fontFamily="serif"
-                x={(keyWidth / 2)}
-                y={keyTitleSize + 5}
-                textAnchor="middle"
-              >
-                Key
-              </Text>
-              <Text
-                fill="#5C5C5C"
-                fontSize={keyItemSize}
-                fontWeight="bold"
-                fontFamily="serif"
-                x="5"
-                y={itemSpacing + keyTitleSize}
-              >
-                Occupied
-              </Text>
-              <Text
-                fill="#5C5C5C"
-                fontSize={keyItemSize}
-                fontWeight="bold"
-                fontFamily="serif"
-                x="5"
-                y={2 * itemSpacing + keyTitleSize}
-              >
-                Vacant
-              </Text>
-              <Use href="#chair" y={itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 20 - 5} fill={styles.occupied} />
-              <Use href="#chair" y={2 * itemSpacing + keyTitleSize - keyItemSize} x={keyWidth - 20 - 5} fill={styles.vacant} />
-            </G>
           </Defs>
           <G>
             <Rect x="0" y="0" width="100%" height="100%" strokeWidth="3" stroke="#CCC" fill="rgba(40, 170, 225, 0.4)" />
@@ -224,8 +188,6 @@ export default class SvgRoot extends Component {
                 </G>
               </G>
             </G>
-
-            <Use href="#key" x="0" y={height - keyHeight} />
           </G>
         </Svg>
       ) : <Text>...Loading</Text>
