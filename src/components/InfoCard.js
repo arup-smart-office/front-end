@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card } from 'react-native-elements';
 import { View, Text } from 'react-native';
+import PT from 'prop-types';
 
 
-export default function InfoCard(currentDesk) {
+export default function InfoCard({ currentDesk }) {
   return (
     <Card
       title={currentDesk ? `Desk ${currentDesk.id}` : null}
@@ -32,3 +33,14 @@ export default function InfoCard(currentDesk) {
     </Card>
   );
 }
+
+InfoCard.propTypes = {
+  currentDesk: PT.shape({
+    id: PT.string.isRequired,
+    isOccupied: PT.bool.isRequired,
+    light: PT.number.isRequired,
+    rfid: PT.string,
+    temperature: PT.number.isRequired,
+    version: PT.number.isRequired,
+  }).isRequired,
+};
