@@ -48,8 +48,8 @@ export default class Maps extends Component {
             align="xMid"
             vbWidth="145"
             vbHeight="230"
-            width={width - 40}
-            height={height - 40}
+            width={width}
+            height={height}
             meetOrSlice="meet"
             svgRoot={SvgRoot}
             constrain={constraints}
