@@ -11,7 +11,11 @@ export default function InfoCard({ currentDesk }) {
       containerStyle={{
         position: 'relative',
         padding: 15,
-        margin: 20,
+        margin: 0,
+        marginTop: 0,
+        borderTopWidth: 5,
+        borderBottomWidth: 0,
+        elevation: 0,
       }}
     >
       {currentDesk ? (

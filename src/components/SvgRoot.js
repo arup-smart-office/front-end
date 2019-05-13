@@ -41,11 +41,11 @@ export default class SvgRoot extends Component {
   };
 
   render() {
-    const { transform, updatedSelectedDesk } = this.props;
+    const { transform, updatedSelectedDesk, map: { height } } = this.props;
     const { desks } = this.state;
     return (
       desks.length > 0 ? (
-        <Svg width="100%" height="100%">
+        <Svg width="100%" height={height}>
           <G>
             <Rect x="0" y="0" width="100%" height="100%" strokeWidth="3" stroke="#CCC" fill="rgba(40, 170, 225, 0.4)" onPressIn={() => { updatedSelectedDesk(null); }} />
 

@@ -5,11 +5,11 @@ import SvgRoot from './SvgRoot';
 import InfoCard from './InfoCard';
 
 export default class Maps extends Component {
-  state = { dimensions: { width: 0, height: 0 }, currentDesk: null };
+  state = { map: { width: 0, height: 0 }, currentDesk: null };
 
-  onLayout = (event) => {
+  mapSize = (event) => {
     const { width, height } = event.nativeEvent.layout;
-    this.setState({ dimensions: { width, height } });
+    this.setState({ map: { width, height } });
   };
 
   updatedSelectedDesk = (currentDesk) => {
@@ -20,7 +20,7 @@ export default class Maps extends Component {
     const { currentDesk } = this.state;
 
     const {
-      dimensions: { width, height },
+      map: { width, height }, map,
     } = this.state;
 
     const constraints = {
@@ -31,13 +31,14 @@ export default class Maps extends Component {
 
     return (
       <View
-        onLayout={this.onLayout}
+        onLayout={this.svgSize}
         style={
           {
             flex: 1, alignSelf: 'stretch', marginBottom: 20,
           }}
       >
         <View
+          onLayout={this.mapSize}
           style={
             {
               flex: 1, alignSelf: 'stretch', margin: 20, marginBottom: 0, paddingBottom: 0,
@@ -52,7 +53,7 @@ export default class Maps extends Component {
             meetOrSlice="meet"
             svgRoot={SvgRoot}
             constrain={constraints}
-            childProps={{ updatedSelectedDesk: this.updatedSelectedDesk }}
+            childProps={{ updatedSelectedDesk: this.updatedSelectedDesk, map }}
           />
         </View>
         {currentDesk
