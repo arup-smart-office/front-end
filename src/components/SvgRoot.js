@@ -6,7 +6,7 @@ import Desk from './Desk';
 import ArupLogo from './ArupLogo';
 
 const {
-  G, Rect, Text, Path,
+  G, Rect, Text, Path, Polygon,
 } = Svg;
 
 const styles = {
@@ -57,15 +57,21 @@ export default class SvgRoot extends Component {
         <Svg width="100%" height={height}>
           <G>
             <Rect x="0" y="0" width="100%" height="100%" fill={styles.background} onPressIn={() => { updatedSelectedDesk(null); }} />
-
-
-
             <G transform={transform}>
               <G key="room" x="5" y="5">
-                <Rect width="150" height="230" x="-2" fill={styles.room} stroke={styles.roomStroke} strokeWidth="1" onPressIn={() => { updatedSelectedDesk(null); }} />
-                <Path rotation='90' origin='275, 175' d="M275,175 v-150 a150,150 0 0,0 -150,150 z" x='-276.5' y='-46' scale='0.1'
-                  fill="rgba(0,0,0,0.1)" stroke="#bdbdbd" strokeWidth='3' />
-                <G key="desks" x="10">
+                <Polygon points="-2,380 148,380 148,0 60,0 0,60" fill={styles.room} stroke={styles.roomStroke} strokeWidth="1" onPressIn={() => { updatedSelectedDesk(null); }} />
+                <Path
+                  rotation="90"
+                  origin="275, 175"
+                  d="M275,175 v-150 a150,150 0 0,0 -150,150 z"
+                  x="-276.5"
+                  y="106"
+                  scale="0.1"
+                  fill="rgba(0,0,0,0.1)"
+                  stroke="#bdbdbd"
+                  strokeWidth="3"
+                />
+                <G key="desks" x="10" y="150">
 
                   <G id="largeDeskOne" y="30">
                     <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" />
