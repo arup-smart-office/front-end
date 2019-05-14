@@ -1,15 +1,46 @@
-import React from 'react';
-import { Header } from 'react-native-elements';
+import React, { Component } from 'react';
+import { Header, ThemeProvider, Button } from 'react-native-elements';
+import { Picker } from 'react-native';
 
-const TitleBar = () => (
-  <Header
-    leftComponent={{ icon: 'menu', color: '#fff' }}
-    centerComponent={{ text: 'TITLE', style: { color: '#fff', fontFamily: 'serif' } }}
-    rightComponent={{ icon: 'home', color: '#fff' }}
-    containerStyle={{
-      backgroundColor: '#28AAE1',
-    }}
-  />
-);
+// import * as React from 'react';
+import { withNavigation } from 'react-navigation';
+import Home from '../../App';
 
-export default TitleBar;
+class TitleBar extends Component {
+  state = { office: 'Select Your Office' };
+
+  render() {
+    return (
+      <Header
+        leftComponent={{
+          icon: 'menu',
+          color: '#fff',
+          onPress: () => this.props.navigation.toggleDrawer(),
+        }}
+        centerComponent={(
+          <Picker
+            selectedValue={this.state.language}
+            style={{
+              height: 50, width: 100, backgroundColor: '#62B9DE',
+            }}
+            onValueChange={(itemValue, itemIndex) => this.setState({ Office: itemValue })}
+          >
+            <Picker.Item label=" Leeds" value=" Leeds" />
+          </Picker>
+)}
+        rightComponent={{
+          icon: 'home',
+          color: '#fff',
+          onPress: () => {
+            this.props.navigation.navigate('Home');
+          },
+        }}
+        containerStyle={{
+          backgroundColor: '#28AAE1',
+        }}
+      />
+    );
+  }
+}
+
+export default withNavigation(TitleBar);
