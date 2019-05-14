@@ -4,6 +4,8 @@ import PT from 'prop-types';
 import * as api from '../api';
 import Desk from './Desk';
 import ArupLogo from './ArupLogo';
+import Fridge from './Fridge';
+
 
 const {
   G, Rect, Text, Path, Polygon,
@@ -71,6 +73,7 @@ export default class SvgRoot extends Component {
                   stroke="#bdbdbd"
                   strokeWidth="3"
                 />
+                <Fridge scale={`${1 / 16},${1 / 16}`} rotation='-90' y='99' />
                 <G key="desks" x="10" y="150">
 
                   <G id="largeDeskOne" y="30">
