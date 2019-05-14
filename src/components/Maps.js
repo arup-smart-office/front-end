@@ -34,14 +34,14 @@ export default class Maps extends Component {
         onLayout={this.svgSize}
         style={
           {
-            flex: 1, alignSelf: 'stretch', marginBottom: 20,
+            flex: 1, alignSelf: 'stretch', marginBottom: 0,
           }}
       >
         <View
           onLayout={this.mapSize}
           style={
             {
-              flex: 1, alignSelf: 'stretch', margin: 20, marginBottom: 0, paddingBottom: 0,
+              flex: 1, alignSelf: 'stretch', margin: 0, marginBottom: 0, paddingBottom: 0,
             }}
         >
           <ZoomableSvg
