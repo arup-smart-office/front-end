@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Header, ThemeProvider, Button } from 'react-native-elements';
 import { Picker } from 'react-native';
-
-// import * as React from 'react';
 import { withNavigation } from 'react-navigation';
-import Home from '../../App';
+
 
 class TitleBar extends Component {
   state = { office: 'Select Your Office' };
@@ -21,11 +19,21 @@ class TitleBar extends Component {
           <Picker
             selectedValue={this.state.language}
             style={{
-              height: 50, width: 100, backgroundColor: '#62B9DE',
+              height: 50,
+              width: 100,
+              borderStyle: 'solid',
+              borderRadius: 4,
+              borderWidth: 0.5,
+              borderColor: '#d6d7da',
             }}
             onValueChange={(itemValue, itemIndex) => this.setState({ Office: itemValue })}
           >
-            <Picker.Item label=" Leeds" value=" Leeds" />
+            <Picker.Item label=" Leeds" value=" Leeds"  style={{ align: 'center', height: 50,
+              width: 100,
+              borderStyle: 'solid',
+              borderRadius: 4,
+              borderWidth: 0.5,
+              borderColor: '#d6d7da'}} />
           </Picker>
 )}
         rightComponent={{
