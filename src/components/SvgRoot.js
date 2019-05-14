@@ -3,6 +3,7 @@ import { Svg } from 'expo';
 import PT from 'prop-types';
 import * as api from '../api';
 import Desk from './Desk';
+import ArupLogo from './ArupLogo';
 
 const {
   G, Rect, Text,
@@ -91,6 +92,9 @@ export default class SvgRoot extends Component {
                 </G>
               </G>
             </G>
+            <G>
+              <ArupLogo scale="0.5" y={height - 30} x="10" stroke="#000" />
+            </G>
           </G>
         </Svg>
       ) : <Text>...Loading</Text>
@@ -106,6 +110,7 @@ SvgRoot.propTypes = {
     translateY: PT.number,
   }),
   updatedSelectedDesk: PT.func.isRequired,
+  map: PT.shape({ width: PT.number.isRequired, height: PT.number.isRequired }).isRequired,
 };
 
 SvgRoot.defaultProps = {
