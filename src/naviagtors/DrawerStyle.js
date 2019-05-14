@@ -1,5 +1,5 @@
 import {
-  Text, View, Image, ScrollView, StyleSheet,
+  StyleSheet,
 } from 'react-native';
 import { Constants } from 'expo';
 

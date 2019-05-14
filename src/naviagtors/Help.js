@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {
-  Text, View, Image, ScrollView, StyleSheet,
-} from 'react-native';
+import { Text, View } from 'react-native';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Ionicons } from '@expo/vector-icons';
+import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
 
@@ -15,13 +15,14 @@ class Help extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TitleBar />
         <Text
           style={styles.paragraph}
           onPress={() => {
-            this.props.navigation.navigate('Home');
+            navigation.navigate('Home');
           }}
         >
           Go back home
@@ -30,5 +31,9 @@ class Help extends React.Component {
     );
   }
 }
+
+Help.propTypes = {
+  navigation: PT.shape({ navigate: PT.func.isRequired }).isRequired,
+};
 
 export default Help;

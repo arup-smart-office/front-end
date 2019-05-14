@@ -1,11 +1,12 @@
 import React from 'react';
-import Home from './Home'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Ionicons } from '@expo/vector-icons';
+import Home from './Home';
 
 
 class OfficePlan extends React.Component {
   static navigationOptions = {
-    title: 'View Office Map',
+    title: 'Office Map',
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-map" size={24} color={focused ? 'blue' : 'black'} />
     ),
