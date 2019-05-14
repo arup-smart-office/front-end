@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PT from 'prop-types';
-import { View } from 'react-native';
+import { View, ViewPropTypes } from 'react-native';
 import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation';
 
 class BottomBar extends Component {
@@ -9,41 +9,47 @@ class BottomBar extends Component {
       key: 'seats',
       icon: 'gamepad-variant',
       label: 'seats',
-      barColor: '#388E3C',
-      pressColor: 'rgba(255, 255, 255, 0.16)',
+      barColor: '#ffffff',
+      pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'temperature',
       icon: 'movie',
       label: 'temperature',
-      barColor: '#B71C1C',
-      pressColor: 'rgba(255, 255, 255, 0.16)',
+      barColor: '#ffffff',
+      pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'humidity',
       icon: 'music-note',
       label: 'humidity',
-      barColor: '#E64A19',
-      pressColor: 'rgba(255, 255, 255, 0.16)',
+      barColor: '#ffffff',
+      pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'light',
       icon: 'gamepad-variant',
       label: 'light',
-      barColor: '#388E3C',
-      pressColor: 'rgba(255, 255, 255, 0.16)',
+      barColor: '#ffffff',
+      pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'noise',
       icon: 'movie',
       label: 'noise',
-      barColor: '#B71C1C',
-      pressColor: 'rgba(255, 255, 255, 0.16)',
+      barColor: '#ffffff',
+      pressColor: 'rgba(0, 0, 0, 0.16)',
     },
   ];
 
   renderTab = ({ tab, isActive }) => (
-    <FullTab key={tab.key} isActive={isActive} label={tab.label} renderIcon={this.renderIcon} />
+    <FullTab
+      key={tab.key}
+      isActive={isActive}
+      label={tab.label}
+      renderIcon={this.renderIcon}
+      labelStyle={{ color: 'grey' }}
+    />
   );
 
   renderIcon = ({ isActive }) => <View />;
@@ -57,6 +63,14 @@ class BottomBar extends Component {
           onTabPress={onClick}
           renderTab={this.renderTab}
           tabs={this.tabs}
+          style={{
+            elevation: 25,
+            shadowOffset: { width: 5, height: 5 },
+            shadowColor: 'grey',
+            shadowOpacity: 0.5,
+            shadowRadius: 10,
+            marginTop: 3,
+          }}
         />
       </View>
     );
