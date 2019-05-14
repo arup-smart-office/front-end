@@ -5,6 +5,7 @@ import * as api from '../api';
 import Desk from './Desk';
 import ArupLogo from './ArupLogo';
 import Fridge from './Fridge';
+import Sink from './Sink';
 
 
 const {
@@ -15,6 +16,10 @@ const styles = {
   background: '#F2F2F2',
   room: '#FFF7EE',
   roomStroke: '#FDE6CE',
+  deskBackground: '#F7F4F6',
+  deskStroke: '#E3E2EB',
+  doorBackground: 'rgba(0,0,0,0.1)',
+  doorStroke: '#bdbdbd',
 };
 
 export default class SvgRoot extends Component {
@@ -61,7 +66,7 @@ export default class SvgRoot extends Component {
             <Rect x="0" y="0" width="100%" height="100%" fill={styles.background} onPressIn={() => { updatedSelectedDesk(null); }} />
             <G transform={transform}>
               <G key="room" x="5" y="5">
-                <Polygon points="-2,380 148,380 148,0 60,0 0,60" fill={styles.room} stroke={styles.roomStroke} strokeWidth="1" onPressIn={() => { updatedSelectedDesk(null); }} />
+                <Polygon points="-2,380 148,380 148,88 60,0 0,60" fill={styles.room} stroke={styles.roomStroke} strokeWidth="1" onPressIn={() => { updatedSelectedDesk(null); }} />
                 <Path
                   rotation="90"
                   origin="275, 175"
@@ -69,11 +74,13 @@ export default class SvgRoot extends Component {
                   x="-276.5"
                   y="106"
                   scale="0.1"
-                  fill="rgba(0,0,0,0.1)"
-                  stroke="#bdbdbd"
+                  fill={styles.doorBackground}
+                  stroke={styles.doorStroke}
                   strokeWidth="3"
                 />
                 <Fridge scale={`${1 / 16},${1 / 16}`} rotation="-90" y="99" />
+                <Polygon points="0,60, 60,0 75,15 15,75" fill={styles.deskBackground} stroke={styles.deskStroke} />
+                <Sink scale={`${1 / 32},${1 / 32}`} rotation="-45" y="26" x="40" />
                 <G key="desks" x="10" y="150">
                   <G id="largeDeskOne" y="30">
                     <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" />
