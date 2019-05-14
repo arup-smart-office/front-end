@@ -73,9 +73,8 @@ export default class SvgRoot extends Component {
                   stroke="#bdbdbd"
                   strokeWidth="3"
                 />
-                <Fridge scale={`${1 / 16},${1 / 16}`} rotation='-90' y='99' />
+                <Fridge scale={`${1 / 16},${1 / 16}`} rotation="-90" y="99" />
                 <G key="desks" x="10" y="150">
-
                   <G id="largeDeskOne" y="30">
                     <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" />
                     <Desk id="1" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="20" />
