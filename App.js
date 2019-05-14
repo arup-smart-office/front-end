@@ -1,24 +1,13 @@
-import {
-  createDrawerNavigator,
-  createAppContainer,
-} from 'react-navigation';
-import {
-  Home, AdminPage, Profile, OfficePlan, Help,
-} from './src/naviagtors/Drawer';
+import React from 'react';
+import { ThemeProvider } from 'react-native-elements';
+import TitleBar from './src/components/TitleBar';
+import Maps from './src/components/Maps';
 
-
-const navigator = createDrawerNavigator(
-  {
-    Home,
-    OfficePlan,
-    Profile,
-    AdminPage,
-    Help,
-  },
-  {
-    drawerType: 'slide',
-    drawerPosition: 'left',
-  },
+const App = () => (
+  <ThemeProvider>
+    <TitleBar />
+    <Maps />
+  </ThemeProvider>
 );
 
-export default createAppContainer(navigator);
+export default App;
