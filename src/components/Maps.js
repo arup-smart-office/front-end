@@ -34,22 +34,22 @@ export default class Maps extends Component {
         onLayout={this.svgSize}
         style={
           {
-            flex: 1, alignSelf: 'stretch', marginBottom: 20,
+            flex: 1, alignSelf: 'stretch', marginBottom: 0,
           }}
       >
         <View
           onLayout={this.mapSize}
           style={
             {
-              flex: 1, alignSelf: 'stretch', margin: 20, marginBottom: 0, paddingBottom: 0,
+              flex: 1, alignSelf: 'stretch', margin: 0, marginBottom: 0, paddingBottom: 0,
             }}
         >
           <ZoomableSvg
             align="xMid"
             vbWidth="145"
             vbHeight="230"
-            width={width - 40}
-            height={height - 40}
+            width={width}
+            height={height}
             meetOrSlice="meet"
             svgRoot={SvgRoot}
             constrain={constraints}
