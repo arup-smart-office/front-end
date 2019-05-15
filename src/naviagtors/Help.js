@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { Alert, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import {
+  Alert,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Ionicons } from '@expo/vector-icons';
 import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
+import { About, FAQs } from '../components/About';
 
 const helpStyles = StyleSheet.create({
   container: {
@@ -55,6 +62,7 @@ export default class Help extends React.Component {
 
   handleButtonPress(page) {
     // Alert.alert('you pressed a button!');
+    console.log(page);
     this.setState({ helpText: page });
   }
 
@@ -73,7 +81,7 @@ export default class Help extends React.Component {
         </Text>
         <View style={helpStyles.container}>
           <View style={helpStyles.buttonContainer}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={helpStyles.button}
               onPress={event => this.handleButtonPress('About')}
             >
@@ -123,9 +131,13 @@ export default class Help extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={helpStyles.textContainer}>
-            <Text>
-              { this.state.helpText }
-            </Text>
+            {this.state.helpText === 'About' &&
+              <About></About>
+            }
+            {this.state.helpText === 'FAQs' &&
+              <FAQs></FAQs>
+            }
+
           </View>
         </View>
       </View>
