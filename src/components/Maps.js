@@ -64,15 +64,18 @@ export default class Maps extends Component {
             meetOrSlice="meet"
             svgRoot={SvgRoot}
             constrain={constraints}
-            childProps={{ updatedSelectedDesk: this.updatedSelectedDesk, map, currentDesk }}
+            childProps={
+              {
+                updatedSelectedDesk: this.updatedSelectedDesk, map, currentDesk, currentDisplay,
+              }}
           />
         </View>
 
         {currentDesk ? (
           <InfoCard currentDesk={currentDesk} />
         ) : (
-          <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
-        )}
+            <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
+          )}
       </View>
     );
   }
