@@ -7,6 +7,7 @@ import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
 import BottomBar from '../components/BottomBar';
 import Analytics from '../components/Analytics';
+import Analytics2 from '../components/Analytics2';
 
 // Drawer Admin Page Component
 class AdminPage extends React.Component {
@@ -18,21 +19,28 @@ class AdminPage extends React.Component {
   };
 
   state = {
-    currentDisplay: 'desks',
+    CurrentDisplay: Analytics,
+    selected: 'desks',
   };
 
   handleBottomBarClick = (newTab) => {
-    this.setState({ currentDisplay: newTab.key });
+    if (newTab.key === 'temperature') {
+      this.setState({ CurrentDisplay: Analytics2, selected: newTab.key });
+    }
+    if (newTab.key === 'desks') {
+      this.setState({ CurrentDisplay: Analytics, selected: newTab.key });
+    }
   };
 
   render() {
-    const { currentDisplay } = this.state;
+    const { CurrentDisplay, selected } = this.state;
     const { navigation } = this.props;
+    console.log(CurrentDisplay);
     return (
       <View style={styles.container}>
         <TitleBar />
-        <Analytics />
-        <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
+        <CurrentDisplay />
+        <BottomBar onClick={this.handleBottomBarClick} activeTab={selected} />
       </View>
     );
   }
