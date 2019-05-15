@@ -53,7 +53,7 @@ export default class Maps extends Component {
             meetOrSlice="meet"
             svgRoot={SvgRoot}
             constrain={constraints}
-            childProps={{ updatedSelectedDesk: this.updatedSelectedDesk, map, currentDesk }}
+            childProps={{ updatedSelectedDesk: this.updatedSelectedDesk, map }}
           />
         </View>
         {currentDesk
