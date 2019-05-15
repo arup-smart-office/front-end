@@ -6,6 +6,7 @@ import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
 import BottomBar from '../components/BottomBar';
+import Analytics from '../components/Analytics';
 
 // Drawer Admin Page Component
 class AdminPage extends React.Component {
@@ -30,14 +31,7 @@ class AdminPage extends React.Component {
     return (
       <View style={styles.container}>
         <TitleBar />
-        <Text
-          style={styles.paragraph}
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-        >
-          Go back home
-        </Text>
+        <Analytics />
         <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
       </View>
     );
