@@ -144,6 +144,7 @@ SvgRoot.propTypes = {
   currentDesk: PT.shape({
     id: PT.string,
   }),
+  currentDisplay: PT.string.isRequired,
 };
 
 SvgRoot.defaultProps = {

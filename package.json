@@ -15,10 +15,11 @@
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
-    "react-native-svg-uri": "^1.2.3",
     "react-native-material-bottom-navigation": "^1.0.3",
+    "react-native-svg-uri": "^1.2.3",
     "react-native-web": "^0.11.2",
     "react-navigation": "^3.9.1",
+    "tinygradient": "^1.0.0",
     "zoomable-svg": "^5.0.0"
   },
   "devDependencies": {

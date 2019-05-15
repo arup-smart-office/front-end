@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Svg } from 'expo';
 import PT from 'prop-types';
+import tinygradient from 'tinygradient'
 
+const tempColours = tinygradient('blue', 'yellow', 'red').rgb(30);
 
 const {
   G, Rect, Path,
@@ -28,6 +30,9 @@ export default class Desk extends Component {
 
   render() {
     const { desks, id, currentDesk } = this.props;
+    const deskTemp = desks[id].temperature;
+    const { _r, _g, _b } = tempColours[deskTemp];
+    const rgb = `rgb(${_r},${_g},${_b})`
     let currentId = null;
     if (currentDesk) {
       currentId = String(Number(currentDesk.id) - 1);
@@ -49,7 +54,7 @@ export default class Desk extends Component {
           </G>
         </G>
         <G id="desk">
-          <Rect x="0" y="0" width="20" height="20" fill={styles.deskBackground} stroke={styles.deskStroke} strokeWidth="1" ry="1" rx="1" />
+          <Rect x="0" y="0" width="20" height="20" fill={`${rgb}`} stroke={styles.deskStroke} strokeWidth="1" ry="1" rx="1" />
         </G>
       </G>
     );
