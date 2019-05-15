@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
-import { Picker } from 'react-native';
+import { Picker, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PT from 'prop-types';
 
@@ -18,32 +18,24 @@ class TitleBar extends Component {
           onPress: () => navigation.toggleDrawer(),
         }}
         centerComponent={(
-          <Picker
-            selectedValue={office}
-            style={{
-              height: 50,
-              width: 100,
-              borderStyle: 'solid',
-              borderRadius: 4,
-              borderWidth: 0.5,
-              borderColor: '#d6d7da',
-            }}
-            onValueChange={itemValue => this.setState({ office: itemValue })}
-          >
-            <Picker.Item
-              label=" Leeds"
-              value=" Leeds"
+          <View style={{ borderRadius: 50, overflow: 'hidden', width: '100%', }}>
+            <Picker
+              selectedValue={office}
+              mode="dropdown"
               style={{
-                align: 'center',
-                height: 50,
-                width: 100,
-                borderStyle: 'solid',
-                borderRadius: 4,
-                borderWidth: 0.5,
-                borderColor: '#d6d7da',
+                width: '100%',
+                color: '#fff',
+                backgroundColor: '#007baf',
+                height: 35
               }}
-            />
-          </Picker>
+              onValueChange={itemValue => this.setState({ office: itemValue })}
+            >
+              <Picker.Item
+                label="Leeds"
+                value="Leeds"
+              />
+            </Picker>
+          </View>
         )}
         rightComponent={{
           icon: 'home',
@@ -54,6 +46,8 @@ class TitleBar extends Component {
         }}
         containerStyle={{
           backgroundColor: '#28AAE1',
+          height: 56,
+          paddingTop: 0,
         }}
       />
     );
