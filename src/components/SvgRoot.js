@@ -56,7 +56,7 @@ export default class SvgRoot extends Component {
 
   render() {
     const {
-      transform, updatedSelectedDesk, map: { height }, currentDesk,
+      transform, updatedSelectedDesk, map: { height }, currentDesk, currentDisplay,
     } = this.props;
     const { desks } = this.state;
     return (
@@ -83,40 +83,40 @@ export default class SvgRoot extends Component {
                 <Sink scale={`${1 / 32},${1 / 32}`} rotation="-45" y="26" x="40" />
                 <G key="desks" x="10" y="150">
                   <G id="largeDeskOne" y="30">
-                    <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" />
-                    <Desk id="1" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="20" />
-                    <Desk id="2" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="40" />
-                    <Desk id="3" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="60" />
-                    <Desk id="4" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" />
-                    <Desk id="5" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="20" />
-                    <Desk id="6" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="40" />
-                    <Desk id="7" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="60" />
+                    <Desk id="0" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" />
+                    <Desk id="1" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="20" />
+                    <Desk id="2" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="40" />
+                    <Desk id="3" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="60" />
+                    <Desk id="4" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" />
+                    <Desk id="5" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="20" />
+                    <Desk id="6" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="40" />
+                    <Desk id="7" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="60" />
                   </G>
                   <G id="largeDeskTwo" y="150">
-                    <Desk id="8" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" />
-                    <Desk id="9" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="20" />
-                    <Desk id="10" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="40" />
-                    <Desk id="11" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="180" x="60" />
-                    <Desk id="12" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" />
-                    <Desk id="13" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="20" />
-                    <Desk id="14" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="40" />
-                    <Desk id="15" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} y="35" x="60" />
+                    <Desk id="8" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" />
+                    <Desk id="9" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="20" />
+                    <Desk id="10" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="40" />
+                    <Desk id="11" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="180" x="60" />
+                    <Desk id="12" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" />
+                    <Desk id="13" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="20" />
+                    <Desk id="14" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="40" />
+                    <Desk id="15" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} y="35" x="60" />
                   </G>
                   <G id="smallDeskOne" x="100">
-                    <Desk id="16" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" x="7.5" />
-                    <Desk id="17" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" y="20" x="7.5" />
+                    <Desk id="16" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" x="7.5" />
+                    <Desk id="17" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" y="20" x="7.5" />
                   </G>
                   <G id="smallDeskTwo" x="100" y="60">
-                    <Desk id="18" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" x="7.5" />
-                    <Desk id="19" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" y="20" x="7.5" />
+                    <Desk id="18" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" x="7.5" />
+                    <Desk id="19" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" y="20" x="7.5" />
                   </G>
                   <G id="smallDeskThree" x="100" y="120">
-                    <Desk id="20" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" x="7.5" />
-                    <Desk id="21" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" y="20" x="7.5" />
+                    <Desk id="20" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" x="7.5" />
+                    <Desk id="21" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" y="20" x="7.5" />
                   </G>
                   <G id="smallDeskThree" x="100" y="180">
-                    <Desk id="22" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" x="7.5" />
-                    <Desk id="23" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} rotation="90" y="20" x="7.5" />
+                    <Desk id="22" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" x="7.5" />
+                    <Desk id="23" desks={desks} onPress={this.selectDesk} origin="10, 17.5" currentDesk={currentDesk} currentDisplay={currentDisplay} rotation="90" y="20" x="7.5" />
                   </G>
                 </G>
               </G>
