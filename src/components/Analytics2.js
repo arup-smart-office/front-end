@@ -70,38 +70,58 @@ export default class Analytics extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 3 }}>
-            <Text>
-              Leeds Office Occupancy
-              {'\xB0C.'}
-            </Text>
-            <PieChart
-              data={[
-                {
-                  name: 'Desks Occupied',
-                  population: occ[0],
-                  //   population: 1,
-                  color: 'rgba(131, 167, 234, 1)',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 20,
-                },
-                {
-                  name: 'Desks Available',
-                  population: occ[1],
-                  color: '#F00',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 20,
-                },
-              ]}
-              width={screenWidth}
-              height={220}
-              chartConfig={chartConfig}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-              absolute
-            />
-          </View>    
+          <View style={{ flex: 3, flexDirection: 'column' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }} />
+              <View style={{ flex: 11 }}>
+                <Text>
+                  Temperature Indiviual Desks
+                  {'\xB0C.'}
+                </Text>
+                <LineChart
+                  // style={graphStyle}
+                  //   graphStyle={chartConfig}
+                  data={{
+                    // labels: id,
+                    datasets: [
+                      {
+                        // data: [1, 1],
+                        data: temp,
+                      },
+                    ],
+                  }}
+                  fromZero="true"
+                  width={screenWidth * 0.55}
+                  height={screenHeight * 0.4}
+                  chartConfig={chartConfig}
+                />
+              </View>
+              <View style={{ flex: 1 }} />
+              <View style={{ flex: 6 }}>
+                <Text>
+                  Temperatures
+                  {'\xB0C.'}
+                </Text>
+                <BarChart
+                  // style={graphStyle}
+                  data={{
+                    labels: ['Average Temperature \xB0C.'],
+                    datasets: [
+                      {
+                        data: [avTemp],
+                        // data: [avTemp],
+                      },
+                    ],
+                  }}
+                  fromZero="true"
+                  width={screenWidth * 0.3}
+                  height={screenHeight * 0.4}
+                  chartConfig={chartConfig}
+                />
+              </View>
+              <View style={{ flex: 1 }} />
+            </View>
+          </View>
         </View>
       </ThemeProvider>
     );
