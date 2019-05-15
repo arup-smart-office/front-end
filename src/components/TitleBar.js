@@ -18,7 +18,7 @@ class TitleBar extends Component {
           onPress: () => navigation.toggleDrawer(),
         }}
         centerComponent={(
-          <View style={{ borderRadius: 50, overflow: 'hidden', width: '100%', }}>
+          <View style={{ borderRadius: 50, overflow: 'hidden', width: '100%' }}>
             <Picker
               selectedValue={office}
               mode="dropdown"
@@ -26,7 +26,7 @@ class TitleBar extends Component {
                 width: '100%',
                 color: '#fff',
                 backgroundColor: '#007baf',
-                height: 35
+                height: 35,
               }}
               onValueChange={itemValue => this.setState({ office: itemValue })}
             >
