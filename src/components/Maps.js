@@ -57,8 +57,8 @@ export default class Maps extends Component {
         >
           <ZoomableSvg
             align="xMid"
-            vbWidth="145"
-            vbHeight="230"
+            vbWidth="155"
+            vbHeight="405"
             width={width}
             height={height}
             meetOrSlice="meet"
