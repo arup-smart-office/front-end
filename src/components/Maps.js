@@ -6,7 +6,7 @@ import InfoCard from './InfoCard';
 import BottomBar from './BottomBar';
 
 export default class Maps extends Component {
-  state = { map: { width: 0, height: 0 }, currentDesk: null, currentDisplay: 'seats' };
+  state = { map: { width: 0, height: 0 }, currentDesk: null, currentDisplay: 'desks' };
 
   mapSize = (event) => {
     const { width, height } = event.nativeEvent.layout;
@@ -19,7 +19,7 @@ export default class Maps extends Component {
 
   handleBottomBarClick = (newTab) => {
     this.setState({ currentDisplay: newTab.key });
-  }
+  };
 
   render() {
     const { currentDesk } = this.state;
@@ -67,10 +67,12 @@ export default class Maps extends Component {
             childProps={{ updatedSelectedDesk: this.updatedSelectedDesk, map, currentDesk }}
           />
         </View>
-        
-        {currentDesk
-          ? <InfoCard currentDesk={currentDesk} />
-          : <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />}
+
+        {currentDesk ? (
+          <InfoCard currentDesk={currentDesk} />
+        ) : (
+          <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
+        )}
       </View>
     );
   }

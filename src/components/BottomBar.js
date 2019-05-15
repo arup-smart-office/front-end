@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
 import PT from 'prop-types';
-import { View, ViewPropTypes } from 'react-native';
-import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation';
+import { View } from 'react-native';
+import BottomNavigation, { ShiftingTab } from 'react-native-material-bottom-navigation';
+import { FontAwesome } from '@expo/vector-icons';
 
 class BottomBar extends Component {
   tabs = [
     {
-      key: 'seats',
-      icon: 'gamepad-variant',
-      label: 'seats',
+      key: 'desks',
+      icon: 'laptop',
+      label: 'desks',
       barColor: '#ffffff',
       pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'temperature',
-      icon: 'movie',
+      icon: 'thermometer-half',
       label: 'temperature',
       barColor: '#ffffff',
       pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'humidity',
-      icon: 'music-note',
+      icon: 'tint',
       label: 'humidity',
       barColor: '#ffffff',
       pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'light',
-      icon: 'gamepad-variant',
+      icon: 'sun-o',
       label: 'light',
       barColor: '#ffffff',
       pressColor: 'rgba(0, 0, 0, 0.16)',
     },
     {
       key: 'noise',
-      icon: 'movie',
+      icon: 'volume-down',
       label: 'noise',
       barColor: '#ffffff',
       pressColor: 'rgba(0, 0, 0, 0.16)',
@@ -43,16 +44,18 @@ class BottomBar extends Component {
   ];
 
   renderTab = ({ tab, isActive }) => (
-    <FullTab
+    <ShiftingTab
       key={tab.key}
       isActive={isActive}
       label={tab.label}
-      renderIcon={this.renderIcon}
-      labelStyle={{ color: 'grey' }}
+      renderIcon={this.renderIcon(tab.icon)}
+      labelStyle={{ color: '#007baf' }}
     />
   );
 
-  renderIcon = ({ isActive }) => <View />;
+  renderIcon = iconName => ({ isActive }) => (
+    <FontAwesome name={iconName} size={32} color={isActive ? '#007baf' : 'grey'} />
+  );
 
   render() {
     const { activeTab, onClick } = this.props;
@@ -70,6 +73,8 @@ class BottomBar extends Component {
             shadowOpacity: 0.5,
             shadowRadius: 10,
             marginTop: 3,
+            paddingLeft: 5,
+            paddingRight: 5,
           }}
         />
       </View>
