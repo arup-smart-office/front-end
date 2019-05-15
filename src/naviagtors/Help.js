@@ -11,7 +11,12 @@ import { Ionicons } from '@expo/vector-icons';
 import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
-import { About, FAQs } from '../components/About';
+import About from '../components/About';
+import FAQs from '../components/FAQs';
+import Contact from '../components/Contact';
+import Terms from '../components/Terms';
+import Copyright from '../components/Copyright';
+import Credits from '../components/Credits';
 
 const helpStyles = StyleSheet.create({
   container: {
@@ -44,7 +49,7 @@ const helpStyles = StyleSheet.create({
   },
 });
 
-export default class Help extends React.Component {
+class Help extends React.Component {
 
   static navigationOptions = {
     title: 'Help',
@@ -53,21 +58,35 @@ export default class Help extends React.Component {
     ),
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      helpText: 'About',
-    };
-  }
+  state = {
+    HelpText: About,
+  };
 
-  handleButtonPress(page) {
-    // Alert.alert('you pressed a button!');
-    console.log(page);
-    this.setState({ helpText: page });
+  handleButtonPress = (page) => {
+    if (page === 'About') {
+      this.setState({ HelpText: About });
+    }
+    if (page === 'FAQs') {
+      this.setState({ HelpText: FAQs });
+    }
+    if (page === 'Contact') {
+      this.setState({ HelpText: Contact });
+    }
+    if (page === 'Terms') {
+      this.setState({ HelpText: Terms });
+    }
+    if (page === 'Copyright') {
+      this.setState({ HelpText: Copyright });
+    }
+    if (page === 'Credits') {
+      this.setState({ HelpText: Credits });
+    }
   }
 
   render() {
+    const { HelpText } = this.state;
     const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <TitleBar />
@@ -130,15 +149,7 @@ export default class Help extends React.Component {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={helpStyles.textContainer}>
-            {this.state.helpText === 'About' &&
-              <About></About>
-            }
-            {this.state.helpText === 'FAQs' &&
-              <FAQs></FAQs>
-            }
-
-          </View>
+          <HelpText />
         </View>
       </View>
     );
@@ -148,3 +159,5 @@ export default class Help extends React.Component {
 Help.propTypes = {
   navigation: PT.shape({ navigate: PT.func.isRequired }).isRequired,
 };
+
+export default Help;
