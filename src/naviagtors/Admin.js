@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
+import BottomBar from '../components/BottomBar';
 import Analytics from '../components/Analytics';
 
 // Drawer Admin Page Component
@@ -16,12 +17,22 @@ class AdminPage extends React.Component {
     ),
   };
 
+  state = {
+    currentDisplay: 'desks',
+  };
+
+  handleBottomBarClick = (newTab) => {
+    this.setState({ currentDisplay: newTab.key });
+  };
+
   render() {
+    const { currentDisplay } = this.state;
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TitleBar />
         <Analytics />
+        <BottomBar onClick={this.handleBottomBarClick} activeTab={currentDisplay} />
       </View>
     );
   }
