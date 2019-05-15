@@ -24,6 +24,8 @@ export const listDesks = `query ListDesks(
       rfid
       temperature
       light
+      sound
+      humidity
       version
     }
     nextToken

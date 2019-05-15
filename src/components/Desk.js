@@ -1,7 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { Svg } from 'expo';
 import PT from 'prop-types';
+import tinygradient from 'tinygradient';
 
+const tempColours = tinygradient('blue', 'yellow', 'red').rgb(30);
+const humColours = tinygradient('blue', 'green', 'red').rgb(100);
 
 const {
   G, Rect, Path,
@@ -27,7 +31,43 @@ export default class Desk extends Component {
   }
 
   render() {
-    const { desks, id, currentDesk } = this.props;
+    const {
+      desks, id, currentDesk, currentDisplay,
+    } = this.props;
+
+
+    let rgb;
+    let r; let g; let
+      b;
+    const deskTemp = desks[id].temperature;
+    const deskHum = Math.round(desks[id].humidity);
+    const deskLight = desks[id].light;
+    const deskSound = desks[id].sound;
+
+    switch (currentDisplay) {
+      case 'temperature':
+        r = tempColours[deskTemp]._r;
+        g = tempColours[deskTemp]._g;
+        b = tempColours[deskTemp]._b;
+        rgb = `rgb(${r},${g},${b})`;
+        break;
+      case 'humidity':
+        r = Math.round(humColours[deskHum]._r);
+        g = Math.round(humColours[deskHum]._g);
+        b = Math.round(humColours[deskHum]._b);
+        rgb = `rgb(${r},${g},${b})`;
+        break;
+      case 'light':
+        rgb = `${deskLight ? '#fff7ff' : '#032533'}`;
+        break;
+      case 'noise':
+        rgb = `${deskSound ? '#fff7ff' : '#032533'}`;
+        break;
+      default:
+        rgb = styles.deskBackground;
+        break;
+    }
+
     let currentId = null;
     if (currentDesk) {
       currentId = String(Number(currentDesk.id) - 1);
@@ -49,7 +89,7 @@ export default class Desk extends Component {
           </G>
         </G>
         <G id="desk">
-          <Rect x="0" y="0" width="20" height="20" fill={styles.deskBackground} stroke={styles.deskStroke} strokeWidth="1" ry="1" rx="1" />
+          <Rect x="0" y="0" width="20" height="20" fill={`${rgb}`} stroke={styles.deskStroke} strokeWidth="1" ry="1" rx="1" />
         </G>
       </G>
     );
@@ -63,15 +103,18 @@ Desk.propTypes = {
     PT.shape({
       id: PT.string.isRequired,
       isOccupied: PT.bool.isRequired,
-      light: PT.number.isRequired,
+      light: PT.bool.isRequired,
+      sound: PT.bool.isRequired,
       rfid: PT.string,
       temperature: PT.number.isRequired,
+      humidity: PT.number.isRequired,
       version: PT.number.isRequired,
     }),
   ).isRequired,
   currentDesk: PT.shape({
     id: PT.string,
   }),
+  currentDisplay: PT.string.isRequired,
 };
 
 Desk.defaultProps = {

@@ -8,6 +8,8 @@ export const onCreateDesk = `subscription OnCreateDesk {
     rfid
     temperature
     light
+    sound
+    humidity
     version
   }
 }
