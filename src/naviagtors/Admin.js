@@ -35,7 +35,6 @@ class AdminPage extends React.Component {
   render() {
     const { CurrentDisplay, selected } = this.state;
     const { navigation } = this.props;
-    console.log(CurrentDisplay);
     return (
       <View style={styles.container}>
         <TitleBar />

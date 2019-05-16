@@ -16,6 +16,7 @@ class TitleBar extends Component {
           icon: 'menu',
           color: '#fff',
           onPress: () => navigation.toggleDrawer(),
+          underlayColor: '#007baf',
         }}
         centerComponent={(
           <View style={{ borderRadius: 50, overflow: 'hidden', width: '100%' }}>
@@ -30,19 +31,17 @@ class TitleBar extends Component {
               }}
               onValueChange={itemValue => this.setState({ office: itemValue })}
             >
-              <Picker.Item
-                label="Leeds"
-                value="Leeds"
-              />
+              <Picker.Item label="Leeds" value="Leeds" />
             </Picker>
           </View>
-        )}
+)}
         rightComponent={{
           icon: 'home',
           color: '#fff',
           onPress: () => {
-            navigation.navigate('Home');
+            navigation.navigate('OfficePlan');
           },
+          underlayColor: '#007baf',
         }}
         containerStyle={{
           backgroundColor: '#28AAE1',
