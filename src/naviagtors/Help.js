@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { Card } from 'react-native-elements'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Ionicons } from '@expo/vector-icons';
 import PT from 'prop-types';
@@ -18,40 +19,6 @@ import Terms from '../components/Terms';
 import Copyright from '../components/Copyright';
 import Credits from '../components/Credits';
 import HelpNav from '../components/HelpNav';
-
-// const helpStyles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     margin: 10,
-//   },
-//   buttonContainer: {
-//     flex: 0.3,
-//     backgroundColor: 'powderblue',
-//     borderColor: 'black',
-//     borderWidth: 1,
-//     borderRadius: 5,
-//   },
-//   textContainer: {
-//     marginLeft: 5,
-//     flex: 0.7,
-//     height: '100%',
-//   },
-//   button: {
-//     alignItems: 'center',
-//     paddingTop: 30,
-//     paddingBottom: 30,
-//     borderColor: 'black',
-//     borderWidth: 1,
-//   },
-//   heading: {
-//     alignItems: 'flex-start',
-//     fontWeight: 'bold',
-//     fontSize: 20,
-//     margin: 5,
-//     marginLeft: 10,
-//   },
-// });
 
 class Help extends React.Component {
 
@@ -102,11 +69,23 @@ class Help extends React.Component {
     return (
       <View style={styles.container}>
         <TitleBar />
-        <View>
-          <HelpText />
+        <View style={{
+          alignSelf: 'stretch',
+          flex: 1,
+        }}>
+          <Card
+            title={Tab}
+            containerStyle={
+              {
+                marginBottom: 60,
+              }
+            }
+          >
+            <HelpText />
+          </Card>
         </View>
         <HelpNav activeTab={Tab} onClick={this.handleButtonPress} />
-      </View>
+      </View >
     );
   }
 }
