@@ -29,8 +29,15 @@ export default function InfoCard({ currentDesk }) {
             <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.temperature}°C`}</Text>
           </Text>
           <Text>
-            <Text>The light level is</Text>
-            <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.light} Lux`}</Text>
+            <Text>The humidity is</Text>
+            <Text style={{ fontWeight: 'bold' }}>{` ${Math.round(currentDesk.humidity)}%`}</Text>
+          </Text>
+          <Text>
+            <Text>This area is</Text>
+            <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.light ? 'brighter' : 'darker'}`}</Text>
+            <Text> and</Text>
+            <Text style={{ fontWeight: 'bold' }}>{` ${currentDesk.sound ? 'louder' : 'quieter'}`}</Text>
+            <Text> than average</Text>
           </Text>
         </View>
       ) : null}
@@ -42,9 +49,11 @@ InfoCard.propTypes = {
   currentDesk: PT.shape({
     id: PT.string.isRequired,
     isOccupied: PT.bool.isRequired,
-    light: PT.number.isRequired,
+    light: PT.bool.isRequired,
+    sound: PT.bool.isRequired,
     rfid: PT.string,
     temperature: PT.number.isRequired,
+    humidity: PT.number.isRequired,
     version: PT.number.isRequired,
   }).isRequired,
 };
