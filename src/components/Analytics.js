@@ -83,14 +83,14 @@ export default class Analytics extends Component {
                   //   population: 1,
                   color: 'rgba(131, 167, 234, 1)',
                   legendFontColor: '#7F7F7F',
-                  legendFontSize: 20,
+                  legendFontSize: 15,
                 },
                 {
                   name: 'Desks Available',
                   population: occ[1],
                   color: '#F00',
                   legendFontColor: '#7F7F7F',
-                  legendFontSize: 20,
+                  legendFontSize: 15,
                 },
               ]}
               width={screenWidth}
