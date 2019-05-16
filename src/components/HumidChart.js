@@ -43,8 +43,8 @@ export default class HumidChart extends Component {
         desks.map(ele => ele.isOccupied).length
           - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
       ],
-      temp: desks.map(ele => ele.temperature),
-      avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
+      temp: desks.map(ele => ele.humidity),
+      avTemp: desks.map(ele => ele.humidity).reduce((acc, num) => acc + num) / desks.length,
       id: desks.map(ele => ele.id),
     }));
   };
@@ -57,8 +57,8 @@ export default class HumidChart extends Component {
         desks.map(ele => ele.isOccupied).length
           - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
       ],
-      temp: desks.map(ele => ele.temperature),
-      avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
+      temp: desks.map(ele => ele.humidity),
+      avTemp: desks.map(ele => ele.humidity).reduce((acc, num) => acc + num) / desks.length,
       id: desks.map(ele => ele.id.toString()),
     });
   };
@@ -75,7 +75,7 @@ export default class HumidChart extends Component {
               <View style={{ flex: 1 }} />
               <View style={{ flex: 11 }}>
                 <Text>
-                  Temperature Indiviual Desks
+                  Humidity Indiviual Desks
                   {'\xB0C.'}
                 </Text>
                 <LineChart
@@ -99,13 +99,13 @@ export default class HumidChart extends Component {
               <View style={{ flex: 1 }} />
               <View style={{ flex: 6 }}>
                 <Text>
-                  Temperatures
+                  Humidity
                   {'\xB0C.'}
                 </Text>
                 <BarChart
                   // style={graphStyle}
                   data={{
-                    labels: ['Average Temperature \xB0C.'],
+                    labels: ['Average Humidity \xB0C.'],
                     datasets: [
                       {
                         data: [avTemp],
