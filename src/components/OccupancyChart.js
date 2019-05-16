@@ -13,7 +13,7 @@ const chartConfig = {
   color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
   strokeWidth: 1, // optional, default 3
 };
-export default class Analytics extends Component {
+export default class OccupancyChart extends Component {
   state = {
     desks: [],
     occ: [0, 1],
@@ -108,7 +108,7 @@ export default class Analytics extends Component {
   }
 }
 
-Analytics.propTypes = {
+OccupancyChart.propTypes = {
   transform: PT.shape({
     scaleX: PT.number,
     scaleY: PT.number,
@@ -117,7 +117,7 @@ Analytics.propTypes = {
   }),
 };
 
-Analytics.defaultProps = {
+OccupancyChart.defaultProps = {
   transform: {
     scaleX: 0,
     scaleY: 0,
