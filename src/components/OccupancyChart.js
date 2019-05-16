@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'react-native-elements';
-import { LineChart, BarChart, PieChart } from 'react-native-chart-kit';
+import {
+  LineChart, BarChart, PieChart, ProgressChart,
+} from 'react-native-chart-kit';
 import { View, Text, Dimensions } from 'react-native';
 import PT from 'prop-types';
 import * as api from '../api';
@@ -8,8 +10,8 @@ import * as api from '../api';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
-  backgroundGradientFrom: 'white',
-  backgroundGradientTo: '#fff',
+  backgroundGradientFrom: '#ecf0f1',
+  backgroundGradientTo: '#ecf0f1',
   color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
   strokeWidth: 1, // optional, default 3
 };
@@ -101,7 +103,17 @@ export default class OccupancyChart extends Component {
               paddingLeft="15"
               absolute
             />
-          </View>    
+          </View>
+        </View>
+        <View>
+          <ProgressChart
+            data={[occ[0] / (occ[0] + occ[1])]}
+            width={screenWidth}
+            height={220}
+            chartConfig={chartConfig}
+            backgroundColor="transparent"
+            absolute
+          />
         </View>
       </ThemeProvider>
     );

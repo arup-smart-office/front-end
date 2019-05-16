@@ -8,10 +8,11 @@ import * as api from '../api';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
-  backgroundGradientFrom: 'white',
-  backgroundGradientTo: '#fff',
-  color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
-  strokeWidth: 1, // optional, default 3
+  backgroundGradientFrom: '#ecf0f1',
+  backgroundGradientTo: '#ecf0f1',
+  color: (opacity = 0) => `rgba(0, 0, 255, ${opacity})`,
+  strokeWidth: 3, // optional, default 3,
+  backgroundColor: 'blue',
 };
 export default class TempChart extends Component {
   state = {
@@ -69,17 +70,40 @@ export default class TempChart extends Component {
     } = this.state;
     return (
       <ThemeProvider>
-        <View>
-          <View style={{ flex: 11 }}>
-            <Text>
-              Temperature Indiviual Desks
-              {'\xB0C.'}
-            </Text>
+        <View style={{ flex: 1, flexDirection: 'column' }}>
+          <View style={{ flex: 0.3 }} />
+          <View style={{ flex: 3 }}>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }} />
+              <View style={{ flex: 8 }}>
+                <BarChart
+                  // style={graphStyle}
+                  data={{
+                    labels: ['Min \xB0C', 'Average \xB0C.', 'Max \xB0C'],
+                    datasets: [
+                      {
+                        data: [Math.min(...temp), avTemp, Math.max(...temp)],
+                        // data: [avTemp],
+                      },
+                    ],
+                  }}
+                  width={screenWidth * 0.8}
+                  height={screenHeight * 0.35}
+                  chartConfig={chartConfig}
+                  backgroundColor="#ecf0f1"
+
+                />
+              </View>
+              <View style={{ flex: 1 }} />
+            </View>
+          </View>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1 }} />
+          <View style={{ flex: 8, backgroundColor: 'blue' }}>
             <LineChart
-              // style={graphStyle}
-              //   graphStyle={chartConfig}
               data={{
-                // labels: id,
+                labels: ['', 'Temperature \xB0C individual desks'],
                 datasets: [
                   {
                     // data: [1, 1],
@@ -87,34 +111,17 @@ export default class TempChart extends Component {
                   },
                 ],
               }}
-              fromZero="true"
-              width={screenWidth * 0.55}
-              height={screenHeight * 0.4}
+              fromZero="false"
+              width={screenWidth * 0.8}
+              height={screenHeight * 0.30}
               chartConfig={chartConfig}
+              backgroundColor="#ecf0f1"
+
             />
           </View>
-          <View style={{ flex: 6 }}>
-            <Text>
-              Temperatures
-              {'\xB0C.'}
-            </Text>
-            <BarChart // style={graphStyle}
-              data={{
-                labels: ['Average Temperature \xB0C.'],
-                datasets: [
-                  {
-                    data: [avTemp],
-                  // data: [avTemp],
-                  },
-                ],
-              }}
-              fromZero="true"
-              width={screenWidth * 0.3}
-              height={screenHeight * 0.4}
-              chartConfig={chartConfig}
-            />
-          </View>
+          <View style={{ flex: 1 }} />
         </View>
+        <View style={{ flex: 0.1 }} />
       </ThemeProvider>
     );
   }
