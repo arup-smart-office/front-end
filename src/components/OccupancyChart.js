@@ -13,7 +13,7 @@ const chartConfig = {
   color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
   strokeWidth: 1, // optional, default 3
 };
-export default class Analytics extends Component {
+export default class OccupancyChart extends Component {
   state = {
     desks: [],
     occ: [0, 1],
@@ -70,65 +70,45 @@ export default class Analytics extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 3, flexDirection: 'column' }}>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 11 }}>
-                <Text>
-                  Temperature Indiviual Desks
-                  {'\xB0C.'}
-                </Text>
-                <LineChart
-                  // style={graphStyle}
-                  //   graphStyle={chartConfig}
-                  data={{
-                    // labels: id,
-                    datasets: [
-                      {
-                        // data: [1, 1],
-                        data: temp,
-                      },
-                    ],
-                  }}
-                  fromZero="true"
-                  width={screenWidth * 0.55}
-                  height={screenHeight * 0.4}
-                  chartConfig={chartConfig}
-                />
-              </View>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 6 }}>
-                <Text>
-                  Temperatures
-                  {'\xB0C.'}
-                </Text>
-                <BarChart
-                  // style={graphStyle}
-                  data={{
-                    labels: ['Average Temperature \xB0C.'],
-                    datasets: [
-                      {
-                        data: [avTemp],
-                        // data: [avTemp],
-                      },
-                    ],
-                  }}
-                  fromZero="true"
-                  width={screenWidth * 0.3}
-                  height={screenHeight * 0.4}
-                  chartConfig={chartConfig}
-                />
-              </View>
-              <View style={{ flex: 1 }} />
-            </View>
-          </View>
+          <View style={{ flex: 3 }}>
+            <Text>
+              Leeds Office Occupancy
+              {'\xB0C.'}
+            </Text>
+            <PieChart
+              data={[
+                {
+                  name: 'Desks Occupied',
+                  population: occ[0],
+                  //   population: 1,
+                  color: 'rgba(131, 167, 234, 1)',
+                  legendFontColor: '#7F7F7F',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Desks Available',
+                  population: occ[1],
+                  color: '#F00',
+                  legendFontColor: '#7F7F7F',
+                  legendFontSize: 15,
+                },
+              ]}
+              width={screenWidth}
+              height={220}
+              chartConfig={chartConfig}
+              accessor="population"
+              backgroundColor="transparent"
+              paddingLeft="15"
+              absolute
+            />
+          </View>    
         </View>
       </ThemeProvider>
     );
   }
 }
 
-Analytics.propTypes = {
+OccupancyChart.propTypes = {
   transform: PT.shape({
     scaleX: PT.number,
     scaleY: PT.number,
@@ -137,7 +117,7 @@ Analytics.propTypes = {
   }),
 };
 
-Analytics.defaultProps = {
+OccupancyChart.defaultProps = {
   transform: {
     scaleX: 0,
     scaleY: 0,
