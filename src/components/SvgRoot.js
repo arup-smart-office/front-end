@@ -33,7 +33,12 @@ export default class SvgRoot extends Component {
   }
 
   updateDesk = ({ value: { data } }) => {
+    const { updatedSelectedDesk, currentDesk } = this.props;
+    const { desks } = this.state;
     const updatedDesk = data.onUpdateDesk;
+    if (updatedDesk.id === currentDesk.id) {
+      updatedSelectedDesk({ ...desks[(updatedDesk.id - 1)], ...updatedDesk });
+    }
     this.setState(({ desks }) => ({
       desks: desks.map((desk) => {
         if (desk.id === updatedDesk.id) {
