@@ -6,7 +6,21 @@ class Copyright extends Component {
     return (
       <View>
         <Text>
-          Copyright
+          Copyright Notice
+
+          {"\n\n"}
+
+          This application is the property of Ove Arup & Partners Ltd.
+
+          {"\n\n"}
+
+          Reproduction and distribution of this application without written permission is prohibited.
+
+          --------------INSERT COPYRIGHT SYMBOL!!--------------------------
+
+          {"\n\n"}
+
+          --------------INSERT LOGO!!--------------------------
         </Text>
       </View>
     );
