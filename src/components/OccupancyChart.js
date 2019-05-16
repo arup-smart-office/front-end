@@ -5,6 +5,7 @@ import {
 } from 'react-native-chart-kit';
 import { View, Text, Dimensions } from 'react-native';
 import PT from 'prop-types';
+import Pie from 'react-native-pie';
 import * as api from '../api';
 
 const screenWidth = Dimensions.get('window').width;
@@ -73,48 +74,12 @@ export default class OccupancyChart extends Component {
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
           <View style={{ flex: 3 }}>
-            <Text>
-              Leeds Office Occupancy
-              {'\xB0C.'}
-            </Text>
-            <PieChart
-              data={[
-                {
-                  name: 'Desks Occupied',
-                  population: occ[0],
-                  //   population: 1,
-                  color: 'rgba(131, 167, 234, 1)',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-                {
-                  name: 'Desks Available',
-                  population: occ[1],
-                  color: '#F00',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-              ]}
-              width={screenWidth}
-              height={220}
-              chartConfig={chartConfig}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-              absolute
-            />
+            <Text>Pie Chart Example</Text>
+            <Pie radius={screenWidth * 0.3} series={[occ[0], occ[1]]} colors={['green', 'red']} />
+            <Text>Solid/Filled Pie Chart</Text>
           </View>
         </View>
-        <View>
-          <ProgressChart
-            data={[occ[0] / (occ[0] + occ[1])]}
-            width={screenWidth}
-            height={220}
-            chartConfig={chartConfig}
-            backgroundColor="transparent"
-            absolute
-          />
-        </View>
+        <View />
       </ThemeProvider>
     );
   }

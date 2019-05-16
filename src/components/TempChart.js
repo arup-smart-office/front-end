@@ -74,7 +74,7 @@ export default class TempChart extends Component {
           <View style={{ flex: 0.3 }} />
           <View style={{ flex: 3 }}>
             <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }} />
+              <View style={{ flex: 0.5 }} />
               <View style={{ flex: 8 }}>
                 <BarChart
                   // style={graphStyle}
@@ -87,20 +87,20 @@ export default class TempChart extends Component {
                       },
                     ],
                   }}
-                  width={screenWidth * 0.8}
+                  width={screenWidth * 1}
                   height={screenHeight * 0.35}
                   chartConfig={chartConfig}
                   backgroundColor="#ecf0f1"
 
                 />
               </View>
-              <View style={{ flex: 1 }} />
+              <View style={{ flex: 0.5 }} />
             </View>
           </View>
         </View>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1 }} />
-          <View style={{ flex: 8, backgroundColor: 'blue' }}>
+         
+          <View style={{ flex: 8}}>
             <LineChart
               data={{
                 labels: ['', 'Temperature \xB0C individual desks'],
@@ -112,14 +112,13 @@ export default class TempChart extends Component {
                 ],
               }}
               fromZero="false"
-              width={screenWidth * 0.8}
+              width={screenWidth * 1}
               height={screenHeight * 0.30}
               chartConfig={chartConfig}
               backgroundColor="#ecf0f1"
 
             />
           </View>
-          <View style={{ flex: 1 }} />
         </View>
         <View style={{ flex: 0.1 }} />
       </ThemeProvider>
