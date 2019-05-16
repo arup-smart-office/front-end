@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import ZoomableSvg from 'zoomable-svg';
 import SvgRoot from './SvgRoot';
 import InfoCard from './InfoCard';
@@ -31,9 +31,9 @@ export default class Maps extends Component {
     } = this.state;
 
     const constraints = {
-      combine: 'dynamic',
+      // combine: 'dynamic',
       scaleExtent: [width / height, 5],
-      translateExtent: [[0, 0], [100, 100]],
+      translateExtent: [[0, 0], [155, 405]],
     };
 
     return (
