@@ -12,6 +12,7 @@ import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
 import About from '../components/About';
+import UserGuide from '../components/UserGuide';
 import FAQs from '../components/FAQs';
 import Contact from '../components/Contact';
 import Terms from '../components/Terms';
@@ -26,19 +27,19 @@ const helpStyles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 0.3,
-    height: 450,
+    height: 550,
     backgroundColor: 'powderblue',
   },
   textContainer: {
     marginLeft: 5,
     flex: 0.7,
-    height: 450,
-    backgroundColor: 'green',
+    height: 550,
+    backgroundColor: 'grey',
   },
   button: {
     alignItems: 'center',
-    paddingTop: 25,
-    paddingBottom: 25,
+    paddingTop: 30,
+    paddingBottom: 30,
   },
   heading: {
     alignItems: 'flex-start',
@@ -65,6 +66,9 @@ class Help extends React.Component {
   handleButtonPress = (page) => {
     if (page === 'About') {
       this.setState({ HelpText: About });
+    }
+    if (page === 'User Guide') {
+      this.setState({ HelpText: UserGuide });
     }
     if (page === 'FAQs') {
       this.setState({ HelpText: FAQs });
@@ -110,6 +114,15 @@ class Help extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={helpStyles.button}
+              onPress={event => this.handleButtonPress('User Guide')}
+            >
+              <Text>
+                User
+                Guide
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={helpStyles.button}
               onPress={event => this.handleButtonPress('FAQs')}
             >
               <Text>
@@ -149,7 +162,9 @@ class Help extends React.Component {
               </Text>
             </TouchableOpacity>
           </View>
-          <HelpText />
+          <View style={helpStyles.textContainer}>
+            <HelpText />
+          </View>
         </View>
       </View>
     );
