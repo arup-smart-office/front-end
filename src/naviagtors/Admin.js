@@ -6,8 +6,11 @@ import PT from 'prop-types';
 import styles from './DrawerStyle';
 import TitleBar from '../components/TitleBar';
 import BottomBar from '../components/BottomBar';
-import Analytics from '../components/Analytics';
-import Analytics2 from '../components/Analytics2';
+import OccupancyChart from '../components/OccupancyChart';
+import TempChart from '../components/TempChart';
+import HumidChart from '../components/HumidChart';
+import LightChart from '../components/LightChart';
+import NoiseChart from '../components/NoiseChart';
 
 // Drawer Admin Page Component
 class AdminPage extends React.Component {
@@ -19,16 +22,25 @@ class AdminPage extends React.Component {
   };
 
   state = {
-    CurrentDisplay: Analytics,
+    CurrentDisplay: OccupancyChart,
     selected: 'desks',
   };
 
   handleBottomBarClick = (newTab) => {
     if (newTab.key === 'temperature') {
-      this.setState({ CurrentDisplay: Analytics2, selected: newTab.key });
+      this.setState({ CurrentDisplay: TempChart, selected: newTab.key });
     }
     if (newTab.key === 'desks') {
-      this.setState({ CurrentDisplay: Analytics, selected: newTab.key });
+      this.setState({ CurrentDisplay: OccupancyChart, selected: newTab.key });
+    }
+    if (newTab.key === 'humidity') {
+      this.setState({ CurrentDisplay: HumidChart, selected: newTab.key });
+    }
+    if (newTab.key === 'light') {
+      this.setState({ CurrentDisplay: LightChart, selected: newTab.key });
+    }
+    if (newTab.key === 'noise') {
+      this.setState({ CurrentDisplay: NoiseChart, selected: newTab.key });
     }
   };
 
