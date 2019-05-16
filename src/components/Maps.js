@@ -55,9 +55,6 @@ export default class Maps extends Component {
             paddingBottom: 0,
           }}
         >
-          {/* <ScrollView>
-            <SvgRoot updatedSelectedDesk={this.updatedSelectedDesk} map={map} currentDesk={currentDesk} currentDisplay={currentDisplay} />
-          </ScrollView> */}
           <ZoomableSvg
             align="xMid"
             vbWidth="155"
