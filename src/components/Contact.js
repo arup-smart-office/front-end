@@ -7,11 +7,7 @@ class Contact extends Component {
       <View>
         <Text>
           Get In Touch {"\n"}
-          Leave your details below with a message and we will get back to you.
-
-          {"\n\n"}
-
-          
+          Send us an email at smartoffice@arup.com
         </Text>
       </View>
     );
