@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import React, { Component, Link } from 'react';
+import { Text, ScrollView, Linking } from 'react-native';
 
 class Credits extends Component {
   render() {
     return (
       <ScrollView style={{ marginBottom: 50 }} >
         <Text>
-          Credits
-
-          {"\n\n"}
-
-          INSERT CREDIT USING THE FOLLOWING FORMAT
-          - Name
-          - What they are credited with
-          - A link to them (website, social media, email)
-          - An avatar
+          <Text>Icons made by </Text>
+          <Text onPress={() => Linking.openURL('https://www.flaticon.com/authors/smashicons')}>Smashicons</Text>
+          <Text> from www.flaticon.com</Text>
         </Text>
         <Text>
+          {"\n\n"}
           Copyright Notice
 
           {"\n\n"}
@@ -25,13 +20,9 @@ class Credits extends Component {
 
           {"\n\n"}
 
-          Reproduction and distribution of this application without written permission is prohibited.
-
-          --------------INSERT COPYRIGHT SYMBOL!!--------------------------
+          Reproduction and distribution of this application without written permission is prohibited. ©
 
           {"\n\n"}
-
-          --------------INSERT LOGO!!--------------------------
         </Text>
         <Text>
           Terms of Use
@@ -71,7 +62,7 @@ class Credits extends Component {
 
           Your use of this application and any dispute arising out of such use of the application is subject to the laws of England, Northern Ireland, Scotland and Wales.
         </Text>
-      </ScrollView>
+      </ScrollView >
     );
   }
 }
