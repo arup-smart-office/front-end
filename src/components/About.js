@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Card, ListItem } from 'react-native-elements';
 
+const aboutStyles = StyleSheet.create({
+  card: {
+    margin: 5,
+  },
+});
+
+// eslint-disable-next-line react/prefer-stateless-function
 class About extends Component {
   render() {
     return (
-      <View>
+      <Card
+        title="About"
+        style={aboutStyles.card}
+      >
         <Text>
           Hi there! Welcome to the Arup SMART Office App!
           
@@ -20,7 +31,7 @@ class About extends Component {
 
           If you find something that isn't to your liking, or feel you have some ideas that could help us to develop to app further, please visit our Contact page and leave us some feedback.
         </Text>
-      </View>
+      </Card>
     );
   }
 }
