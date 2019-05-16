@@ -69,58 +69,50 @@ export default class TempChart extends Component {
     } = this.state;
     return (
       <ThemeProvider>
-        <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 3, flexDirection: 'column' }}>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 11 }}>
-                <Text>
-                  Temperature Indiviual Desks
-                  {'\xB0C.'}
-                </Text>
-                <LineChart
-                  // style={graphStyle}
-                  //   graphStyle={chartConfig}
-                  data={{
-                    // labels: id,
-                    datasets: [
-                      {
-                        // data: [1, 1],
-                        data: temp,
-                      },
-                    ],
-                  }}
-                  fromZero="true"
-                  width={screenWidth * 0.55}
-                  height={screenHeight * 0.4}
-                  chartConfig={chartConfig}
-                />
-              </View>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 6 }}>
-                <Text>
-                  Temperatures
-                  {'\xB0C.'}
-                </Text>
-                <BarChart
-                  // style={graphStyle}
-                  data={{
-                    labels: ['Average Temperature \xB0C.'],
-                    datasets: [
-                      {
-                        data: [avTemp],
-                        // data: [avTemp],
-                      },
-                    ],
-                  }}
-                  fromZero="true"
-                  width={screenWidth * 0.3}
-                  height={screenHeight * 0.4}
-                  chartConfig={chartConfig}
-                />
-              </View>
-              <View style={{ flex: 1 }} />
-            </View>
+        <View>
+          <View style={{ flex: 11 }}>
+            <Text>
+              Temperature Indiviual Desks
+              {'\xB0C.'}
+            </Text>
+            <LineChart
+              // style={graphStyle}
+              //   graphStyle={chartConfig}
+              data={{
+                // labels: id,
+                datasets: [
+                  {
+                    // data: [1, 1],
+                    data: temp,
+                  },
+                ],
+              }}
+              fromZero="true"
+              width={screenWidth * 0.55}
+              height={screenHeight * 0.4}
+              chartConfig={chartConfig}
+            />
+          </View>
+          <View style={{ flex: 6 }}>
+            <Text>
+              Temperatures
+              {'\xB0C.'}
+            </Text>
+            <BarChart // style={graphStyle}
+              data={{
+                labels: ['Average Temperature \xB0C.'],
+                datasets: [
+                  {
+                    data: [avTemp],
+                  // data: [avTemp],
+                  },
+                ],
+              }}
+              fromZero="true"
+              width={screenWidth * 0.3}
+              height={screenHeight * 0.4}
+              chartConfig={chartConfig}
+            />
           </View>
         </View>
       </ThemeProvider>

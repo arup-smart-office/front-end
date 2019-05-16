@@ -39,9 +39,9 @@ export default class NoiseChart extends Component {
     }));
     this.setState(({ desks }) => ({
       occ: [
-        desks.map(ele => ele.isOccupied).filter(ele => ele).length,
-        desks.map(ele => ele.isOccupied).length
-          - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
+        desks.map(ele => ele.sound).filter(ele => ele).length,
+        desks.map(ele => ele.sound).length
+          - desks.map(ele => ele.sound).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -53,9 +53,9 @@ export default class NoiseChart extends Component {
     this.setState({
       desks: desks.sort((a, b) => Number(a.id) - Number(b.id)),
       occ: [
-        desks.map(ele => ele.isOccupied).filter(ele => ele).length,
-        desks.map(ele => ele.isOccupied).length
-          - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
+        desks.map(ele => ele.sound).filter(ele => ele).length,
+        desks.map(ele => ele.sound).length
+          - desks.map(ele => ele.sound).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -78,7 +78,7 @@ export default class NoiseChart extends Component {
             <PieChart
               data={[
                 {
-                  name: 'Desks Occupied',
+                  name: 'Loud Desks',
                   population: occ[0],
                   //   population: 1,
                   color: 'rgba(131, 167, 234, 1)',
@@ -86,7 +86,7 @@ export default class NoiseChart extends Component {
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Desks Available',
+                  name: 'Quiet Desks',
                   population: occ[1],
                   color: '#F00',
                   legendFontColor: '#7F7F7F',

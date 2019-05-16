@@ -26,7 +26,7 @@ export default class LightChart extends Component {
     api.getDesks(24).then(({ data: { listDesks } }) => this.seedDesk(listDesks.items));
     api.subscribeToDesks(this.updateDesk);
   }
-
+  
   updateDesk = ({ value: { data } }) => {
     const updatedDesk = data.onUpdateDesk;
     this.setState(({ desks }) => ({
@@ -39,23 +39,24 @@ export default class LightChart extends Component {
     }));
     this.setState(({ desks }) => ({
       occ: [
-        desks.map(ele => ele.isOccupied).filter(ele => ele).length,
-        desks.map(ele => ele.isOccupied).length
-          - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
+        desks.map(ele => ele.light).filter(ele => ele).length,
+        desks.map(ele => ele.light).length
+        - desks.map(ele => ele.light).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
       id: desks.map(ele => ele.id),
     }));
   };
-
+  
   seedDesk = (desks) => {
+    console.log(desks)
     this.setState({
       desks: desks.sort((a, b) => Number(a.id) - Number(b.id)),
       occ: [
-        desks.map(ele => ele.isOccupied).filter(ele => ele).length,
-        desks.map(ele => ele.isOccupied).length
-          - desks.map(ele => ele.isOccupied).filter(ele => ele).length,
+        desks.map(ele => ele.light).filter(ele => ele).length,
+        desks.map(ele => ele.light).length
+          - desks.map(ele => ele.light).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -78,7 +79,7 @@ export default class LightChart extends Component {
             <PieChart
               data={[
                 {
-                  name: 'Desks Occupied',
+                  name: 'Bright Desks',
                   population: occ[0],
                   //   population: 1,
                   color: 'rgba(131, 167, 234, 1)',
@@ -86,7 +87,7 @@ export default class LightChart extends Component {
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Desks Available',
+                  name: 'Dark Desks',
                   population: occ[1],
                   color: '#F00',
                   legendFontColor: '#7F7F7F',
