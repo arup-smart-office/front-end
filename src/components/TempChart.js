@@ -100,7 +100,7 @@ export default class TempChart extends Component {
         </View>
         <View style={{ flexDirection: 'row' }}>
          
-          <View style={{ flex: 8}}>
+          <View style={{ flex: 8 }}>
             <LineChart
               data={{
                 labels: ['', 'Temperature \xB0C individual desks'],

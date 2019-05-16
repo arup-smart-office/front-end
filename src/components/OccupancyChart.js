@@ -13,8 +13,8 @@ const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
   backgroundGradientFrom: '#ecf0f1',
   backgroundGradientTo: '#ecf0f1',
-  color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
-  strokeWidth: 1, // optional, default 3
+  color: () => 'rgba(0, 0, 255)',
+  strokeWidth: 5, // optional, default 3
 };
 export default class OccupancyChart extends Component {
   state = {
@@ -73,10 +73,28 @@ export default class OccupancyChart extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
+          <View style={{flex:0.3}}></View>
           <View style={{ flex: 3 }}>
-            <Text>Pie Chart Example</Text>
-            <Pie radius={screenWidth * 0.3} series={[occ[0], occ[1]]} colors={['green', 'red']} />
-            <Text>Solid/Filled Pie Chart</Text>
+            <BarChart
+              // style={graphStyle}
+              data={{
+                legendFontSize: 45,
+                labels: ['Occupied Desks', 'Vancant Desks'],
+                datasets: [
+                  {
+                    data: [occ[0], occ[1]],
+                    // data: [avTemp],
+                    strokeWidth: 5, // optional
+                  },
+                ],
+              }}
+              width={screenWidth * 1}
+              fromZero="false"
+              height={screenHeight * 0.8}
+              chartConfig={chartConfig}
+              backgroundColor="#ecf0f1"
+              legendFontSize={20}
+            />
           </View>
         </View>
         <View />
