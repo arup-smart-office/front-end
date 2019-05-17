@@ -5,7 +5,6 @@ import {
 } from 'react-native-chart-kit';
 import { View, Text, Dimensions } from 'react-native';
 import PT from 'prop-types';
-import Pie from 'react-native-pie';
 import * as api from '../api';
 
 const screenWidth = Dimensions.get('window').width;
