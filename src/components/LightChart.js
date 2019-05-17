@@ -8,9 +8,9 @@ import * as api from '../api';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
-  backgroundGradientFrom: 'white',
-  backgroundGradientTo: '#fff',
-  color: (opacity = 3) => 'rgba(50, 145, 155)',
+  backgroundGradientFrom: '#ecf0f1',
+  backgroundGradientTo: '#ecf0f1',
+  color: (opacity = 3) => 'rgba(0, 123, 195, 3)',
   strokeWidth: 1, // optional, default 3
 };
 export default class LightChart extends Component {
@@ -69,7 +69,7 @@ export default class LightChart extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
-        <View style={{flex:0.3}}></View>
+          <View style={{ flex: 0.3 }} />
 
           <View style={{ flex: 3 }}>
             <BarChart

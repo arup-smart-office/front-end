@@ -8,9 +8,9 @@ import * as api from '../api';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
-  backgroundGradientFrom: 'white',
-  backgroundGradientTo: '#fff',
-  color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
+  backgroundGradientFrom: '#ecf0f1',
+  backgroundGradientTo: '#ecf0f1',
+  color: (opacity = 3) => 'rgba(0, 123, 195, 3)',
   strokeWidth: 1, // optional, default 3
 };
 export default class NoiseChart extends Component {

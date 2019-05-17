@@ -12,7 +12,7 @@ const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
   backgroundGradientFrom: '#ecf0f1',
   backgroundGradientTo: '#ecf0f1',
-  color: () => 'rgba(0, 0, 255)',
+  color: () => 'rgba(0, 123, 195, 3)',
   strokeWidth: 5, // optional, default 3
 };
 export default class OccupancyChart extends Component {

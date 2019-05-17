@@ -11,7 +11,7 @@ const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
   backgroundGradientFrom: '#ecf0f1',
   backgroundGradientTo: '#ecf0f1',
-  color: (opacity = 3) => `rgba(255, 0, 255, ${opacity})`,
+  color: (opacity = 3) => `rgba(0, 123, 195, ${opacity})`,
   strokeWidth: 1, // optional, default 3
 };
 export default class HumidChart extends Component {
