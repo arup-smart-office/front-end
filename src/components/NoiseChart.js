@@ -40,8 +40,7 @@ export default class NoiseChart extends Component {
     this.setState(({ desks }) => ({
       occ: [
         desks.map(ele => ele.sound).filter(ele => ele).length,
-        desks.map(ele => ele.sound).length
-          - desks.map(ele => ele.sound).filter(ele => ele).length,
+        desks.map(ele => ele.sound).length - desks.map(ele => ele.sound).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -54,8 +53,7 @@ export default class NoiseChart extends Component {
       desks: desks.sort((a, b) => Number(a.id) - Number(b.id)),
       occ: [
         desks.map(ele => ele.sound).filter(ele => ele).length,
-        desks.map(ele => ele.sound).length
-          - desks.map(ele => ele.sound).filter(ele => ele).length,
+        desks.map(ele => ele.sound).length - desks.map(ele => ele.sound).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -70,39 +68,31 @@ export default class NoiseChart extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
+        <View style={{flex:0.3}}></View>
+
           <View style={{ flex: 3 }}>
-            <Text>
-              Leeds Office Occupancy
-              {'\xB0C.'}
-            </Text>
-            <PieChart
-              data={[
-                {
-                  name: 'Loud Desks',
-                  population: occ[0],
-                  //   population: 1,
-                  color: 'rgba(131, 167, 234, 1)',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-                {
-                  name: 'Quiet Desks',
-                  population: occ[1],
-                  color: '#F00',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-              ]}
-              width={screenWidth}
-              height={220}
+            <BarChart
+              // style={graphStyle}
+              data={{
+                labels: ['Louder Desks', 'Quieter Desks'],
+                datasets: [
+                  {
+                    data: [occ[0], occ[1]],
+                    // data: [avTemp],
+                    strokeWidth: 5, // optional
+                  },
+                ],
+              }}
+              width={screenWidth * 1}
+              fromZero="false"
+              height={screenHeight * 0.8}
               chartConfig={chartConfig}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-              absolute
+              backgroundColor="#ecf0f1"
+              legendFontSize={20}
             />
-          </View>    
+          </View>
         </View>
+        <View />
       </ThemeProvider>
     );
   }

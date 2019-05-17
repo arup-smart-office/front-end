@@ -10,7 +10,7 @@ const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
   backgroundGradientFrom: 'white',
   backgroundGradientTo: '#fff',
-  color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
+  color: (opacity = 3) => 'rgba(50, 145, 155)',
   strokeWidth: 1, // optional, default 3
 };
 export default class LightChart extends Component {
@@ -26,7 +26,7 @@ export default class LightChart extends Component {
     api.getDesks(24).then(({ data: { listDesks } }) => this.seedDesk(listDesks.items));
     api.subscribeToDesks(this.updateDesk);
   }
-  
+
   updateDesk = ({ value: { data } }) => {
     const updatedDesk = data.onUpdateDesk;
     this.setState(({ desks }) => ({
@@ -40,23 +40,21 @@ export default class LightChart extends Component {
     this.setState(({ desks }) => ({
       occ: [
         desks.map(ele => ele.light).filter(ele => ele).length,
-        desks.map(ele => ele.light).length
-        - desks.map(ele => ele.light).filter(ele => ele).length,
+        desks.map(ele => ele.light).length - desks.map(ele => ele.light).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
       id: desks.map(ele => ele.id),
     }));
   };
-  
+
   seedDesk = (desks) => {
-    console.log(desks)
+    console.log(desks);
     this.setState({
       desks: desks.sort((a, b) => Number(a.id) - Number(b.id)),
       occ: [
         desks.map(ele => ele.light).filter(ele => ele).length,
-        desks.map(ele => ele.light).length
-          - desks.map(ele => ele.light).filter(ele => ele).length,
+        desks.map(ele => ele.light).length - desks.map(ele => ele.light).filter(ele => ele).length,
       ],
       temp: desks.map(ele => ele.temperature),
       avTemp: desks.map(ele => ele.temperature).reduce((acc, num) => acc + num) / desks.length,
@@ -71,39 +69,31 @@ export default class LightChart extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
+        <View style={{flex:0.3}}></View>
+
           <View style={{ flex: 3 }}>
-            <Text>
-              Leeds Office Occupancy
-              {'\xB0C.'}
-            </Text>
-            <PieChart
-              data={[
-                {
-                  name: 'Bright Desks',
-                  population: occ[0],
-                  //   population: 1,
-                  color: 'rgba(131, 167, 234, 1)',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-                {
-                  name: 'Dark Desks',
-                  population: occ[1],
-                  color: '#F00',
-                  legendFontColor: '#7F7F7F',
-                  legendFontSize: 15,
-                },
-              ]}
-              width={screenWidth}
-              height={220}
+            <BarChart
+              // style={graphStyle}
+              data={{
+                labels: ['Brighter Desks', 'Darker Desks'],
+                datasets: [
+                  {
+                    data: [occ[0], occ[1]],
+                    // data: [avTemp],
+                    strokeWidth: 5, // optional
+                  },
+                ],
+              }}
+              width={screenWidth * 1}
+              fromZero="false"
+              height={screenHeight * 0.8}
               chartConfig={chartConfig}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-              absolute
+              backgroundColor="#ecf0f1"
+              legendFontSize={20}
             />
-          </View>    
+          </View>
         </View>
+        <View />
       </ThemeProvider>
     );
   }

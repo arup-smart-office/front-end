@@ -3,14 +3,15 @@ import { ThemeProvider } from 'react-native-elements';
 import { LineChart, BarChart, PieChart } from 'react-native-chart-kit';
 import { View, Text, Dimensions } from 'react-native';
 import PT from 'prop-types';
+import { Greengrass } from 'aws-sdk/clients/all';
 import * as api from '../api';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const chartConfig = {
-  backgroundGradientFrom: 'white',
-  backgroundGradientTo: '#fff',
-  color: (opacity = 3) => `rgba(0, 0, 255, ${opacity})`,
+  backgroundGradientFrom: '#ecf0f1',
+  backgroundGradientTo: '#ecf0f1',
+  color: (opacity = 3) => `rgba(255, 0, 255, ${opacity})`,
   strokeWidth: 1, // optional, default 3
 };
 export default class HumidChart extends Component {
@@ -70,59 +71,52 @@ export default class HumidChart extends Component {
     return (
       <ThemeProvider>
         <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 3, flexDirection: 'column' }}>
+          <View style={{ flex: 0.3 }} />
+          <View style={{ flex: 3 }}>
             <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 11 }}>
-                <Text>
-                  Humidity Indiviual Desks
-                  {'\xB0C.'}
-                </Text>
-                <LineChart
-                  // style={graphStyle}
-                  //   graphStyle={chartConfig}
-                  data={{
-                    // labels: id,
-                    datasets: [
-                      {
-                        // data: [1, 1],
-                        data: temp,
-                      },
-                    ],
-                  }}
-                  fromZero="true"
-                  width={screenWidth * 0.55}
-                  height={screenHeight * 0.4}
-                  chartConfig={chartConfig}
-                />
-              </View>
-              <View style={{ flex: 1 }} />
-              <View style={{ flex: 6 }}>
-                <Text>
-                  Humidity
-                  {'\xB0C.'}
-                </Text>
+              <View style={{ flex: 8 }}>
                 <BarChart
                   // style={graphStyle}
                   data={{
-                    labels: ['Average Humidity \xB0C.'],
+                    colors: ['blue', 'green', 'red'],
+                    labels: ['Min %', 'Average %', 'Max %'],
                     datasets: [
                       {
-                        data: [avTemp],
+                        data: [Math.min(...temp), avTemp, Math.max(...temp)],
                         // data: [avTemp],
                       },
                     ],
                   }}
-                  fromZero="true"
-                  width={screenWidth * 0.3}
-                  height={screenHeight * 0.4}
+                  width={screenWidth * 1}
+                  height={screenHeight * 0.35}
                   chartConfig={chartConfig}
+                  backgroundColor="#ecf0f1"
                 />
               </View>
-              <View style={{ flex: 1 }} />
             </View>
           </View>
         </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 8 }}>
+            <LineChart
+              data={{
+                labels: ['', 'Humidity % individual desks'],
+                datasets: [
+                  {
+                    // data: [1, 1],
+                    data: temp,
+                  },
+                ],
+              }}
+              fromZero="false"
+              width={screenWidth * 1}
+              height={screenHeight * 0.3}
+              chartConfig={chartConfig}
+              backgroundColor="#ecf0f1"
+            />
+          </View>
+        </View>
+        <View style={{ flex: 0.1 }} />
       </ThemeProvider>
     );
   }
